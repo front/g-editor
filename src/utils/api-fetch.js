@@ -4,7 +4,7 @@ const medias = getMedias();
 
 window.wp = {
   apiFetch: function (options) {
-    console.log(options.path, options);
+    // console.log(options.path, options);
 
     let res = {};
     let item = {};
@@ -49,7 +49,7 @@ window.wp = {
         break;
     }
 
-    console.log(res);
+    // console.log(res);
     return new Promise(resolve => { resolve(res); });
   },
 };
