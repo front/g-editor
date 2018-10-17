@@ -39,8 +39,10 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      setTimeout(function(){
+        <%= htmlWebpackPlugin.options.blockScript %>
+      }, 100);
+    </script>
   </body>
-  <script>
-    <%= htmlWebpackPlugin.options.blockScript %>
-  </script>
 </html>
