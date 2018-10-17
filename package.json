@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A minimalist version of Gutenberg's editor. Ideal for testing custom blocks.",
   "author": "Frontkom <frontkom@frontkom.no>",
-  "private": true,
+  "private": false,
   "main": "build/index.js",
   "dependencies": {
     "@babel/core": "7.1.0",
@@ -72,7 +72,7 @@
     "test": "node scripts/test.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "deploy": "npm run build && npm publish --access public"
+    "deploy": "npm publish --access public"
   },
   "browserslist": [
     ">0.2%",
