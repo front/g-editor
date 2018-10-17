@@ -1,0 +1,7 @@
+# /node_modules/* and /bower_components/* in the project root are ignored by default
+
+build/*
+node_modules/*
+config/*
+scripts/*
+src/serviceWorker.js
