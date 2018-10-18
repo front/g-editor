@@ -85,11 +85,6 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   return loaders;
 };
 
-// const entries = [];
-// if (process.env.BLOCK_DIR) {
-//   entries.push(process.env.BLOCK_DIR + '/build/index.js');
-// }
-
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
