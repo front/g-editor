@@ -16,20 +16,21 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 
 // Block Script and Style
 const blockDir = process.env.BLOCK_DIR;
-
-let blockVars = {};
+const blockVars = {};
 
 if (blockDir) {
   const fs = require('fs');
 
   if (fs.lstatSync(blockDir).isDirectory()) {
+    const script = `${blockDir}/build/index.js`;
+    const style  = `${blockDir}/build/style.css`;
 
-    if (fs.lstatSync(`${blockDir}/build/index.js`).isFile()) {
-      blockVars.blockScript = fs.readFileSync(`${blockDir}/build/index.js`).toString();
+    if (fs.existsSync(script) && fs.lstatSync(script).isFile()) {
+      blockVars.blockScript = fs.readFileSync(script).toString();
     }
 
-    if (fs.lstatSync(`${blockDir}/build/style.css`).isFile()) {
-      blockVars.blockStyle = fs.readFileSync(`${blockDir}/build/style.css`).toString();
+    if (fs.existsSync(style) && fs.lstatSync(style).isFile()) {
+      blockVars.blockStyle = fs.readFileSync(style).toString();
     }
   }
 }
