@@ -1,6 +1,6 @@
 {
   "name": "@frontkom/g-editor",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A minimalist version of Gutenberg's editor. Ideal for testing custom blocks.",
   "author": "Frontkom <frontkom@frontkom.no>",
   "private": false,
