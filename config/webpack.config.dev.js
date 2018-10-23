@@ -24,6 +24,7 @@ if (blockDir) {
   if (fs.lstatSync(blockDir).isDirectory()) {
     const script = `${blockDir}/build/index.js`;
     const style  = `${blockDir}/build/style.css`;
+    const editor = `${blockDir}/build/editor.css`;
 
     if (fs.existsSync(script) && fs.lstatSync(script).isFile()) {
       blockVars.blockScript = fs.readFileSync(script).toString();
@@ -31,6 +32,10 @@ if (blockDir) {
 
     if (fs.existsSync(style) && fs.lstatSync(style).isFile()) {
       blockVars.blockStyle = fs.readFileSync(style).toString();
+    }
+
+    if (fs.existsSync(editor) && fs.lstatSync(editor).isFile()) {
+      blockVars.blockEditorStyle = fs.readFileSync(editor).toString();
     }
   }
 }

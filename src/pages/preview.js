@@ -9,9 +9,18 @@ class Preview extends React.Component {
       rendered: '',
     };
   }
+
+  componentWillMount () {
+    // remove editor style from page
+    const editorStyle = document.querySelector('style[id="block-editor-style"]');
+
+    if (editorStyle) {
+      editorStyle.remove();
+    }
+  }
+
   componentDidMount () {
     const page = JSON.parse(localStorage.getItem('g-editor-page'));
-
 
     if (page) {
       this.setState({
