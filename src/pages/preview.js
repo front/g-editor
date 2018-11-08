@@ -11,11 +11,18 @@ class Preview extends React.Component {
   }
 
   componentWillMount () {
-    // remove editor style from page
+    // remove block editor style from page
     const editorStyle = document.querySelector('style[id="block-editor-style"]');
 
     if (editorStyle) {
       editorStyle.remove();
+    }
+
+    // remove editor style
+    const style = document.querySelector('link[href$="css/gutenberg/style.css"]');
+
+    if (style) {
+      style.remove();
     }
   }
 
