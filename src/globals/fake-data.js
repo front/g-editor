@@ -61,6 +61,7 @@ export const getMedias = (n = 3) => {
       date,
       link: `${window.location.origin}/img${id}.png`,
       media_type: 'image',
+      mime_type: 'image/jpeg',
       source_url: `${window.location.origin}/img${id}.png`,
       media_details: {
         file: '',
@@ -73,3 +74,11 @@ export const getMedias = (n = 3) => {
     };
   });
 };
+
+export const themes = [{
+  theme_supports: {
+    formats: ['standard', 'aside', 'image', 'video', 'quote', 'link', 'gallery', 'audio'],
+    'post-thumbanials': true,
+    'responsive-embeds': false,
+  },
+}];

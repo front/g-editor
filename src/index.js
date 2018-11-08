@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import './utils';
+import './globals';
 import Editor from './pages/editor';
 import Preview from './pages/preview';
 import * as serviceWorker from './serviceWorker';
@@ -10,8 +10,8 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render((
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={ Editor } />
       <Route exact path="/preview" component={ Preview } />
+      <Route component={ Editor } />
     </Switch>
   </BrowserRouter>
 ), document.getElementById('root'));
