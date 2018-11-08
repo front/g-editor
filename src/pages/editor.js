@@ -3,11 +3,6 @@ import { data, editPost } from '@frontkom/gutenberg-js';
 
 // Gutenberg JS Style
 import '@frontkom/gutenberg-js/build/css/block-library/style.css';
-import '@frontkom/gutenberg-js/build/css/components/style.css';
-import '@frontkom/gutenberg-js/build/css/nux/style.css';
-import '@frontkom/gutenberg-js/build/css/editor/style.css';
-import '@frontkom/gutenberg-js/build/css/block-library/theme.css';
-import '@frontkom/gutenberg-js/build/css/block-library/edit-blocks.css';
 import '@frontkom/gutenberg-js/build/css/style.css';
 
 class Editor extends Component {
@@ -22,6 +17,9 @@ class Editor extends Component {
       bodyPlaceholder: 'Insert your custom block',
       isRTL: false,
       autosaveInterval: 0,
+      postLock: {
+        isLocked: false,
+      },
       canPublish: false,
       canSave: false,
       canAutosave: false,
