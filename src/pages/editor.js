@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { data, editPost } from '@frontkom/gutenberg-js';
+import React from 'react';
+import { data, editPost, domReady } from '@frontkom/gutenberg-js';
 
 // Gutenberg JS Style
 import '@frontkom/gutenberg-js/build/css/block-library/style.css';
 import '@frontkom/gutenberg-js/build/css/style.css';
 
-class Editor extends Component {
+class Editor extends React.Component {
   componentDidMount () {
     const settings = {
       alignWide: true,
@@ -33,8 +33,13 @@ class Editor extends Component {
     data.dispatch('core/nux').disableTips();
 
     // Initialize the editor
-    editPost.initializeEditor('editor', 'page', 1, settings, {});
+    window._wpLoadGutenbergEditor = new Promise(function (resolve) {
+      domReady(function () {
+        resolve(editPost.initializeEditor('editor', 'page', 1, settings, {}));
+      });
+    });
   }
+
   render () {
     return <div id="editor" className="gutenberg__editor"></div>;
   }
