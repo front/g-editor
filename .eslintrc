@@ -20,7 +20,8 @@
 		"document": true,
 		"localStorage": true,
 		"sessionStorage": true,
-		"XMLHttpRequest": true
+		"React": true,
+		"ReactDOM": true
 	},
 	"plugins": [
 		"react"
