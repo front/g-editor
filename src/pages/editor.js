@@ -1,16 +1,11 @@
-import React, { Component } from 'react';
-import { data, editPost } from '@frontkom/gutenberg-js';
+import React from 'react';
+import { data, editPost, domReady } from '@frontkom/gutenberg-js';
 
 // Gutenberg JS Style
 import '@frontkom/gutenberg-js/build/css/block-library/style.css';
-import '@frontkom/gutenberg-js/build/css/components/style.css';
-import '@frontkom/gutenberg-js/build/css/nux/style.css';
-import '@frontkom/gutenberg-js/build/css/editor/style.css';
-import '@frontkom/gutenberg-js/build/css/block-library/theme.css';
-import '@frontkom/gutenberg-js/build/css/block-library/edit-blocks.css';
 import '@frontkom/gutenberg-js/build/css/style.css';
 
-class Editor extends Component {
+class Editor extends React.Component {
   componentDidMount () {
     const settings = {
       alignWide: true,
@@ -22,6 +17,9 @@ class Editor extends Component {
       bodyPlaceholder: 'Insert your custom block',
       isRTL: false,
       autosaveInterval: 0,
+      postLock: {
+        isLocked: false,
+      },
       canPublish: false,
       canSave: false,
       canAutosave: false,
@@ -35,8 +33,13 @@ class Editor extends Component {
     data.dispatch('core/nux').disableTips();
 
     // Initialize the editor
-    editPost.initializeEditor('editor', 'page', 1, settings, {});
+    window._wpLoadGutenbergEditor = new Promise(function (resolve) {
+      domReady(function () {
+        resolve(editPost.initializeEditor('editor', 'page', 1, settings, {}));
+      });
+    });
   }
+
   render () {
     return <div id="editor" className="gutenberg__editor"></div>;
   }

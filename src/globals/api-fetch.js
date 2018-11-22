@@ -39,7 +39,21 @@ const apiFetch = options => {
       res = medias;
       break;
     case '/wp/v2/media':
-      res = medias[Math.floor(Math.random() * medias.length) + 0];
+      if (options.method === 'OPTIONS') {
+        res = {
+          headers: {
+            get: value => {
+              if (value === 'allow') {
+                return [ 'POST' ];
+              }
+            },
+          },
+        };
+      }
+      else {
+        res = medias[Math.floor(Math.random() * medias.length) + 0];
+      }
+
       break;
     case '/wp/v2/themes?status=active':
       res = themes;

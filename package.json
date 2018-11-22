@@ -7,7 +7,7 @@
   "main": "build/index.js",
   "dependencies": {
     "@babel/core": "7.1.0",
-    "@frontkom/gutenberg-js": "2.6.1",
+    "@frontkom/gutenberg-js": "^3.0.1",
     "@svgr/webpack": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -42,10 +42,8 @@
     "postcss-loader": "3.0.0",
     "postcss-preset-env": "6.0.6",
     "postcss-safe-parser": "4.0.1",
-    "react": "^16.5.2",
     "react-app-polyfill": "^0.1.3",
     "react-dev-utils": "^6.0.5",
-    "react-dom": "^16.5.2",
     "react-render-html": "^0.6.0",
     "react-router-dom": "^4.3.1",
     "resolve": "1.8.1",
@@ -72,7 +70,7 @@
     "test": "node scripts/test.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "deploy": "npm publish --access public"
+    "deploy": "npm run lint && npm publish --access public"
   },
   "browserslist": [
     ">0.2%",
