@@ -16,16 +16,16 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 
 // Block Script and Style
-const blockDir = process.env.BLOCK_DIR || '';
+const blockDir = process.env.BLOCK_DIR ? process.env.BLOCK_DIR + '/' : '';
 const blockVars = {};
 
 if (blockDir) {
   const fs = require('fs');
 
   if (fs.lstatSync(blockDir).isDirectory()) {
-    const script = `${blockDir}/build/index.js`;
-    const style  = `${blockDir}/build/style.css`;
-    const editor = `${blockDir}/build/editor.css`;
+    const script = `${blockDir}build/index.js`;
+    const style  = `${blockDir}build/style.css`;
+    const editor = `${blockDir}build/editor.css`;
 
     if (fs.existsSync(script) && fs.lstatSync(script).isFile()) {
       blockVars.blockScript = fs.readFileSync(script).toString();
@@ -399,9 +399,9 @@ module.exports = {
       publicPath: publicPath,
     }),
     new CopyWebpackPlugin( [
-			{ from: blockDir + 'node_modules/tinymce/plugins', to: 'static/js/plugins' },
-			{ from: blockDir + 'node_modules/tinymce/themes', to: 'static/js/themes' },
-			{ from: blockDir + 'node_modules/tinymce/skins', to: 'static/js/skins' },
+			{ from: `${blockDir}node_modules/tinymce/plugins`, to: 'static/js/plugins' },
+			{ from: `${blockDir}node_modules/tinymce/themes`, to: 'static/js/themes' },
+			{ from: `${blockDir}node_modules/tinymce/skins`, to: 'static/js/skins' },
 		], {} ),
   ],
 
