@@ -16,7 +16,7 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 
 // Block Script and Style
-const blockDir = process.env.BLOCK_DIR;
+const blockDir = process.env.BLOCK_DIR || '';
 const blockVars = {};
 
 if (blockDir) {
@@ -399,9 +399,9 @@ module.exports = {
       publicPath: publicPath,
     }),
     new CopyWebpackPlugin( [
-			{ from: 'node_modules/tinymce/plugins', to: 'static/js/plugins' },
-			{ from: 'node_modules/tinymce/themes', to: 'static/js/themes' },
-			{ from: 'node_modules/tinymce/skins', to: 'static/js/skins' },
+			{ from: blockDir + 'node_modules/tinymce/plugins', to: 'static/js/plugins' },
+			{ from: blockDir + 'node_modules/tinymce/themes', to: 'static/js/themes' },
+			{ from: blockDir + 'node_modules/tinymce/skins', to: 'static/js/skins' },
 		], {} ),
   ],
 
