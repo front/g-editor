@@ -3,7 +3,7 @@ import { page, pageType, getMedias, themes } from './fake-data.js';
 const medias = getMedias();
 
 const apiFetch = options => {
-  console.log(options.path, options);
+  // console.log(options.path, options);
 
   let res = {};
   let item = {};
@@ -62,7 +62,7 @@ const apiFetch = options => {
       break;
   }
 
-  console.log(res);
+  // console.log(res);
   return new Promise(resolve => { resolve(res); });
 };
 
