@@ -21,9 +21,10 @@ class Editor extends React.Component {
         isLocked: false,
       },
       canPublish: false,
-      canSave: false,
-      canAutosave: false,
+      canSave: true,
+      canAutosave: true,
       mediaLibrary: true,
+      showInsertionPoint: true,
     };
 
     // reset localStorage
