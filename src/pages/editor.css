@@ -1,0 +1,14 @@
+
+.reset-storage {
+  position: absolute;
+  z-index: 99;
+  top: 12px;
+  left: 50%;
+  margin-left: -75px;
+}
+
+@media (min-width: 782px) {
+  .edit-post-layout__content {
+    margin-left: 0 !important;
+  }
+}
