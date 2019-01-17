@@ -24,7 +24,6 @@ class Editor extends React.Component {
       canSave: true,
       canAutosave: true,
       mediaLibrary: true,
-      showInsertionPoint: true,
     };
 
     // reset localStorage

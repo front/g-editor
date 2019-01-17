@@ -2,7 +2,9 @@ const date = (new Date()).toISOString();
 
 export const pageType = {
   id: 1,
-  name: 'Pages', rest_base: 'pages', slug: 'page',
+  name: 'Pages',
+  rest_base: 'pages',
+  slug: 'page',
   supports: {
     author: false,
     comments: false,
