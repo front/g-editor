@@ -1,5 +1,5 @@
 /* eslint no-cond-assign: off */
-import { page, pageType, getMedias, themes } from './fake-data.js';
+import { page, pageType, getMedias, themes, taxonomies, categories, users } from './fake-data.js';
 
 const medias = getMedias();
 
@@ -59,7 +59,7 @@ const apiFetch = options => {
     res = [ getPage() ];
   }
   else if(route('/wp/v2/pages/{id}', _path) || route('/wp/v2/pages/{id}/autosaves', _path)) {
-    if(method === 'PUT' && data) {
+    if((method === 'POST' || method === 'PUT') && data) {
       savePage(options.data);
     }
     res = getPage();
@@ -89,12 +89,30 @@ const apiFetch = options => {
     res = themes;
   }
 
+  // Taxonomies
+  else if(route('/wp/v2/taxonomies', _path)) {
+    res = taxonomies;
+  }
+  else if(rt = route('/wp/v2/taxonomies/{name}', _path)) {
+    res = taxonomies[rt.name];
+  }
+
+  // Categories
+  else if(route('/wp/v2/categories', _path)) {
+    res = categories;
+  }
+
+  // Users
+  else if(route('/wp/v2/users', _path)) {
+    res = users;
+  }
+
   else {
     console.warn('Unmatched route:', method || 'GET', path, data);
   }
 
   // console.log(res);
-  return new Promise(resolve => { resolve(res); });
+  return Promise.resolve(res);
 };
 
 export default apiFetch;
