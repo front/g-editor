@@ -1,10 +1,11 @@
 /* eslint no-cond-assign: off */
-import { page, pageType, getMedias, themes, taxonomies, categories, users } from './fake-data.js';
 
-const medias = getMedias();
+import { pages, types, themes, taxonomies, categories, users } from './fake-data.js';
+import { medias, createMedia } from './fake-media.js';
+
 
 function getPage () {
-  return JSON.parse(localStorage.getItem('g-editor-page')) || page;
+  return JSON.parse(localStorage.getItem('g-editor-page')) || pages[0];
 }
 
 function savePage (data) {
@@ -39,7 +40,7 @@ function route (pattern, pathname) {
 }
 
 
-const apiFetch = options => {
+const apiFetch = async options => {
   // console.log(options.path, options);
 
   let res = {}, rt;
@@ -48,10 +49,10 @@ const apiFetch = options => {
 
   // Types
   if(route('/wp/v2/types', _path)) {
-    res = { page: pageType };
+    res = types;
   }
-  else if(route('/wp/v2/types/{type}', _path)) {
-    res = { ...pageType };
+  else if(rt = route('/wp/v2/types/{type}', _path)) {
+    res = types[rt.type];
   }
 
   // Pages
@@ -76,7 +77,12 @@ const apiFetch = options => {
         },
       };
     }
+    else if(method === 'POST') {
+      const file = options.body.get('file');
+      res = file ? await createMedia(file) : {};
+    }
     else {
+      console.log(medias.length);
       res = medias;
     }
   }
@@ -112,7 +118,7 @@ const apiFetch = options => {
   }
 
   // console.log(res);
-  return Promise.resolve(res);
+  return res;
 };
 
 export default apiFetch;
