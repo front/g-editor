@@ -51,14 +51,14 @@ for(let i = 0; i < 4; i++) {
 }
 
 // Load media (videos)
-medias.push(getMedia(4, {
+medias.push(getMedia(5, {
   media_type: 'video',
   mime_type: 'video/mp4',
   source_url: `${window.location.origin}/video1.mp4`,
   thumbnail: 'https://i.vimeocdn.com/video/570251592_640x360.jpg',
 }));
 
-medias.push(getMedia(5, {
+medias.push(getMedia(6, {
   media_type: 'video',
   mime_type: 'video/mp4',
   source_url: `${window.location.origin}/video2.mp4`,
