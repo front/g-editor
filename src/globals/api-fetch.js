@@ -11,6 +11,7 @@ function getPage () {
 function savePage (data) {
   const item = {
     ...getPage(),
+    ...data,
     content: {
       raw: data.content,
       rendered: data.content.replace(/(<!--.*?-->)/g, ''),
