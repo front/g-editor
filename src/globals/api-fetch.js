@@ -82,7 +82,7 @@ const apiFetch = async options => {
       res = file ? await createMedia(file) : {};
     }
     else {
-      console.log(medias.length);
+      // console.log(medias.length);
       res = medias;
     }
   }
