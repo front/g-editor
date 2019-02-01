@@ -131,6 +131,9 @@ export const taxonomies = {
     _links: {
       collection: [], 'wp:items': [],
     },
+    visibility: {
+      show_ui: true,
+    },
   },
   post_tag: {
     name: 'Tags',
@@ -141,6 +144,9 @@ export const taxonomies = {
     rest_base: 'tags',
     _links: {
       collection: [], 'wp:items': [],
+    },
+    visibility: {
+      show_ui: true,
     },
   },
 };
