@@ -1,5 +1,6 @@
 import React from 'react';
 import renderHTML from 'react-render-html';
+import { getPage } from '../globals/api-fetch';
 
 class Preview extends React.Component {
   constructor (props) {
@@ -27,7 +28,7 @@ class Preview extends React.Component {
   }
 
   componentDidMount () {
-    const page = JSON.parse(localStorage.getItem('g-editor-page'));
+    const page = getPage(); // JSON.parse(localStorage.getItem('g-editor-page'));
 
     if (page) {
       this.setState({

@@ -1,6 +1,7 @@
 import React from 'react';
 import { data, editPost, domReady } from '@frontkom/gutenberg-js';
 import { types } from '../globals/fake-data';
+import { getPage } from '../globals/api-fetch';
 
 // Gutenberg JS Style
 import '@frontkom/gutenberg-js/build/css/block-library/style.css';
@@ -54,10 +55,23 @@ class Editor extends React.Component {
 
   resetLocalStorage = ev => {
     ev.preventDefault();
-    const { postType } = this.state;
 
-    localStorage.removeItem(`g-editor-${postType}`);
+    localStorage.removeItem('g-editor-page');
     window.location.reload();
+  };
+
+  changePostType = (ev, type) => {
+    ev.preventDefault();
+    const slug = type.slice(0, -1);
+    // update postType in localStorage before reload the editor
+    const item = {
+      ...getPage(slug),
+      type: slug,
+    };
+
+    localStorage.setItem('g-editor-page', JSON.stringify(item));
+
+    window.location.replace(type);
   };
 
   render () {
@@ -72,7 +86,7 @@ class Editor extends React.Component {
                 <button
                   key={ type }
                   className={ `components-button ${type === postType ? 'is-primary' : ''}` }
-                  onClick={ () => window.location.replace(types[type].rest_base) }
+                  onClick={ ev => this.changePostType(ev, types[type].rest_base) }
                 >{ types[type].name }</button>
               );
             })

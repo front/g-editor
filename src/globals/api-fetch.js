@@ -4,8 +4,8 @@ import { pages, types, themes, taxonomies, categories, users } from './fake-data
 import { medias, createMedia } from './fake-media.js';
 
 
-function getPage (type = 'page') {
-  return JSON.parse(localStorage.getItem(`g-editor-${type}`)) || pages[type];
+export function getPage (type = 'page') {
+  return JSON.parse(localStorage.getItem('g-editor-page')) || pages[type];
 }
 
 function savePage (data, type = 'page') {
@@ -17,7 +17,7 @@ function savePage (data, type = 'page') {
       rendered: data.content.replace(/(<!--.*?-->)/g, ''),
     },
   };
-  localStorage.setItem(`g-editor-${type}`, JSON.stringify(item));
+  localStorage.setItem('g-editor-page', JSON.stringify(item));
 }
 
 function route (pattern, pathname) {
