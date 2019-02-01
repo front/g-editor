@@ -1,10 +1,28 @@
 const date = (new Date()).toISOString();
 
-
 // Post types and Pages
 export const types = {
-  page: {
+  post: {
     id: 1,
+    name: 'Posts',
+    rest_base: 'posts',
+    slug: 'post',
+    supports: {
+      author: false,
+      comments: false, // hide discussion-panel
+      'custom-fields': true,
+      editor: true,
+      excerpt: false,
+      'page-attributes': false, // hide page-attributes panel
+      revisions: false,
+      thumbnail: false, // show featured-image panel
+      title: true, // show title on editor
+    },
+    taxonomies:[ 'category', 'post_tag' ],
+    viewable: true,
+  },
+  page: {
+    id: 2,
     name: 'Pages',
     rest_base: 'pages',
     slug: 'page',
@@ -20,41 +38,75 @@ export const types = {
       thumbnail: false,
       title: false,
     },
+    taxonomies:[ ],
     viewable: true,
   },
 };
 
-export const pages = [{
-  id: 1,
-  content: {
-    raw: '',
-    rendered: '',
+export const pages = {
+  page: {
+    id: 1,
+    content: {
+      raw: '',
+      rendered: '',
+    },
+    date,
+    date_gmt: date,
+    title: {
+      raw: 'Preview page',
+      rendered: 'Preview page',
+    },
+    excerpt: {
+      raw: '',
+      rendered: '',
+    },
+    status: 'draft',
+    revisions: { count: 0, last_id: 0 },
+    parent: 0,
+    theme_style: true,
+    type: 'page',
+    link: `${window.location.origin}/preview`,
+    categories: [ ],
+    featured_media: 0,
+    permalink_template: `${window.location.origin}/preview`,
+    preview_link: `${window.location.origin}/preview`,
+    _links: {
+      'wp:action-assign-categories': [],
+      'wp:action-create-categories': [],
+    },
   },
-  date,
-  date_gmt: date,
-  title: {
-    raw: 'Preview page',
-    rendered: 'Preview page',
+  post: {
+    id: 1,
+    content: {
+      raw: '',
+      rendered: '',
+    },
+    date,
+    date_gmt: date,
+    title: {
+      raw: 'Preview post',
+      rendered: 'Preview post',
+    },
+    excerpt: {
+      raw: '',
+      rendered: '',
+    },
+    status: 'draft',
+    revisions: { count: 0, last_id: 0 },
+    parent: 0,
+    theme_style: true,
+    type: 'post',
+    link: `${window.location.origin}/preview`,
+    categories: [ ],
+    featured_media: 0,
+    permalink_template: `${window.location.origin}/preview`,
+    preview_link: `${window.location.origin}/preview`,
+    _links: {
+      'wp:action-assign-categories': [],
+      'wp:action-create-categories': [],
+    },
   },
-  excerpt: {
-    raw: '',
-    rendered: '',
-  },
-  status: 'draft',
-  revisions: { count: 0, last_id: 0 },
-  parent: 0,
-  theme_style: true,
-  type: 'page',
-  link: `${window.location.origin}/preview`,
-  categories: [ ],
-  featured_media: 0,
-  permalink_template: `${window.location.origin}/preview`,
-  preview_link: `${window.location.origin}/preview`,
-  _links: {
-    'wp:action-assign-categories': [],
-    'wp:action-create-categories': [],
-  },
-}];
+};
 
 
 // Themes

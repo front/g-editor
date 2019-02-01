@@ -1,10 +1,15 @@
 
-.reset-storage {
+.editor-nav {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+}
+
+.editor-nav * {
   z-index: 99;
-  top: 12px;
-  left: 50%;
-  margin-left: -75px;
 }
 
 @media (min-width: 782px) {

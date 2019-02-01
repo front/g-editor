@@ -4,20 +4,20 @@ import { pages, types, themes, taxonomies, categories, users } from './fake-data
 import { medias, createMedia } from './fake-media.js';
 
 
-function getPage () {
-  return JSON.parse(localStorage.getItem('g-editor-page')) || pages[0];
+function getPage (type = 'page') {
+  return JSON.parse(localStorage.getItem(`g-editor-${type}`)) || pages[type];
 }
 
-function savePage (data) {
+function savePage (data, type = 'page') {
   const item = {
-    ...getPage(),
+    ...getPage(type),
     ...data,
     content: {
       raw: data.content,
       rendered: data.content.replace(/(<!--.*?-->)/g, ''),
     },
   };
-  localStorage.setItem('g-editor-page', JSON.stringify(item));
+  localStorage.setItem(`g-editor-${type}`, JSON.stringify(item));
 }
 
 function route (pattern, pathname) {
@@ -65,6 +65,17 @@ const apiFetch = async options => {
       savePage(options.data);
     }
     res = getPage();
+  }
+
+  // Posts
+  else if(rt = route('/wp/v2/posts', _path)) {
+    res = [ getPage('post') ];
+  }
+  else if(route('/wp/v2/posts/{id}', _path) || route('/wp/v2/posts/{id}/autosaves', _path)) {
+    if((method === 'POST' || method === 'PUT') && data) {
+      savePage(options.data, 'post');
+    }
+    res = getPage('post');
   }
 
   // Media

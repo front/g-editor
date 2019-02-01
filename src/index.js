@@ -11,6 +11,8 @@ ReactDOM.render((
   <BrowserRouter>
     <Switch>
       <Route exact path="/preview" component={ Preview } />
+      <Route exact path="/posts" component={ Editor } />
+      <Route exact path="/pages" component={ Editor } />
       <Route component={ Editor } />
     </Switch>
   </BrowserRouter>
