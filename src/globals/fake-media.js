@@ -46,7 +46,7 @@ export function createMedia (file) {
 }
 
 // Load media (images)
-for(let i = 0; i < 4; i++) {
+for(let i = 0; i < 3; i++) {
   medias.push(getMedia(i + 1));
 }
 
