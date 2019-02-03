@@ -1,5 +1,4 @@
 import React from 'react';
-import renderHTML from 'react-render-html';
 import { getPage } from '../globals/api-fetch';
 
 class Preview extends React.Component {
@@ -38,7 +37,7 @@ class Preview extends React.Component {
   }
   render () {
     const { rendered } = this.state;
-    return rendered ? renderHTML(rendered) : <center><em>Add your custom block in the editor</em></center>;
+    return rendered ? <div dangerouslySetInnerHTML={{ __html: rendered }} /> : <center><em>Add your custom block in the editor</em></center>;
   }
 }
 
