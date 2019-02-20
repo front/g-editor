@@ -18,6 +18,31 @@ const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 
+// Block Script and Style
+const blockDir = process.env.BLOCK_DIR ? process.env.BLOCK_DIR + '/' : '';
+const blockVars = {};
+
+if (blockDir) {
+  const fs = require('fs');
+
+  if (fs.lstatSync(blockDir).isDirectory()) {
+    const script = `${blockDir}build/index.js`;
+    const style  = `${blockDir}build/style.css`;
+    const editor = `${blockDir}build/editor.css`;
+
+    if (fs.existsSync(script) && fs.lstatSync(script).isFile()) {
+      blockVars.blockScript = fs.readFileSync(script).toString();
+    }
+
+    if (fs.existsSync(style) && fs.lstatSync(style).isFile()) {
+      blockVars.blockStyle = fs.readFileSync(style).toString();
+    }
+
+    if (fs.existsSync(editor) && fs.lstatSync(editor).isFile()) {
+      blockVars.blockEditorStyle = fs.readFileSync(editor).toString();
+    }
+  }
+}
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -238,7 +263,7 @@ module.exports = {
             options: {
               formatter: require.resolve('react-dev-utils/eslintFormatter'),
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -271,7 +296,7 @@ module.exports = {
               customize: require.resolve(
                 'babel-preset-react-app/webpack-overrides'
               ),
-              
+
               plugins: [
                 [
                   require.resolve('babel-plugin-named-asset-import'),
@@ -309,7 +334,7 @@ module.exports = {
               cacheDirectory: true,
               // Save disk space when time isn't as important
               cacheCompression: true,
-              
+
               // If an error happens in a package, it's possible to be
               // because it was compiled. Thus, we don't want the browser
               // debugger to show the original code. Instead, the code
@@ -407,6 +432,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       template: paths.appHtml,
+      ...blockVars,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
