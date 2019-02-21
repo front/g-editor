@@ -1,11 +1,11 @@
 const date = (new Date()).toISOString();
+const origin = window.location.origin;
 
 // List of images
-export const medias = [];
+export const mediaList = [];
 
 export function getMedia (id, params = {}) {
   const sizes = {};
-
   if (params.thumbnail) {
     sizes.thumbnail = {
       source_url: params.thumbnail,
@@ -18,10 +18,10 @@ export function getMedia (id, params = {}) {
     caption: { raw: '', rendered: '' },
     date_gmt: date,
     date,
-    media_type: params.media_type || 'image',
-    mime_type: params.mime_type || 'image/jpeg',
-    source_url: params.source_url || `${window.location.origin}/img${id}.png`,
-    // link: `${window.location.origin}/img${id}.png`,
+    media_type: params.media_type,
+    mime_type: params.mime_type,
+    source_url: params.source_url,
+    // link: params.source_url,
     media_details: {
       file: '',
       width: 0,
@@ -37,30 +37,59 @@ export function createMedia (file) {
     const reader = new window.FileReader();
     reader.onload = () => {
       // Create media and add to list
-      const img = getMedia(medias.length + 1, file.type, reader.result);
-      medias.push(img);
+      const img = getMedia(mediaList.length + 1, {
+        media_type: file.type.split('/')[0],
+        mime_type: file.type,
+        source_url: reader.result,
+      });
+      mediaList.push(img);
       resolve(img);
     };
     reader.readAsDataURL(file);
   });
 }
 
-// Load media (images)
-for(let i = 0; i < 3; i++) {
-  medias.push(getMedia(i + 1));
-}
 
-// Load media (videos)
-medias.push(getMedia(5, {
-  media_type: 'video',
-  mime_type: 'video/mp4',
-  source_url: `${window.location.origin}/video1.mp4`,
-  thumbnail: 'https://i.vimeocdn.com/video/570251592_640x360.jpg',
+// Load media (images)
+mediaList.push(getMedia(1, {
+  media_type: 'image',
+  mime_type: 'image/jpeg',
+  source_url: `${origin}/img1.jpg`,
 }));
 
-medias.push(getMedia(6, {
+mediaList.push(getMedia(2, {
+  media_type: 'image',
+  mime_type: 'image/jpeg',
+  source_url: `${origin}/img2.jpeg`,
+}));
+
+mediaList.push(getMedia(3, {
+  media_type: 'image',
+  mime_type: 'image/png',
+  source_url: `${origin}/img3.png`,
+}));
+
+
+// Load media (videos)
+mediaList.push(getMedia(4, {
   media_type: 'video',
   mime_type: 'video/mp4',
-  source_url: `${window.location.origin}/video2.mp4`,
-  thumbnail: 'https://i.vimeocdn.com/video/543433483_640x360.jpg',
+  source_url: `${origin}/video1.mp4`,
+  thumbnail: `${origin}/video1-thumb.jpg`,
+}));
+
+mediaList.push(getMedia(5, {
+  media_type: 'video',
+  mime_type: 'video/mp4',
+  source_url: `${origin}/video2.mp4`,
+  thumbnail: `${origin}/video2-thumb.jpg`,
+}));
+
+
+// Load media (audios)
+mediaList.push(getMedia(6, {
+  media_type: 'audio',
+  mime_type: 'audio/mp3',
+  source_url: `${origin}/audio1.mp3`,
+  thumbnail: `${origin}/audio1-thumb.png`,
 }));
