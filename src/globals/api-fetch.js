@@ -1,7 +1,8 @@
 /* eslint no-cond-assign: off */
 
 import { pages, types, themes, taxonomies, categories, users } from './fake-data.js';
-import { mediaList, createMedia } from './fake-media.js';
+import { mediaList } from './fake-media.js';
+import { storeMedia, loadMedia } from './media-db.js';
 
 
 export function getPage (type = 'page') {
@@ -91,14 +92,15 @@ const apiFetch = async options => {
     }
     else if(method === 'POST') {
       const file = options.body.get('file');
-      res = file ? await createMedia(file) : {};
+      res = file ? await storeMedia(file) : {};
     }
     else {
       res = mediaList;
     }
   }
   else if(rt = route('/wp/v2/media/{id}', _path)) {
-    res = mediaList[+rt.id - 1];
+    const id = parseInt(rt.id);
+    res = id > 100 ? await loadMedia(id) : mediaList[id - 1];
   }
 
   // Themes

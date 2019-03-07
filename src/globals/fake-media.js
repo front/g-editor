@@ -32,23 +32,6 @@ export function getMedia (id, params = {}) {
   };
 }
 
-export function createMedia (file) {
-  return new Promise(resolve => {
-    const reader = new window.FileReader();
-    reader.onload = () => {
-      // Create media and add to list
-      const img = getMedia(mediaList.length + 1, {
-        media_type: file.type.split('/')[0],
-        mime_type: file.type,
-        source_url: reader.result,
-      });
-      mediaList.push(img);
-      resolve(img);
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
 
 // Load media (images)
 mediaList.push(getMedia(1, {
