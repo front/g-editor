@@ -12,7 +12,7 @@ const pDb = new Promise((resolve, reject) => {
 
   req.onsuccess = ev => {
     db = ev.target.result;
-    console.log('Created/Opened database', db);
+    // console.log('Created/Opened database', db);
     resolve(db);
   };
   req.onerror = err => {
@@ -25,7 +25,7 @@ const pDb = new Promise((resolve, reject) => {
       keyPath: 'id',
       autoIncrement: true,
     });
-    console.log('DB Setup');
+    // console.log('DB Setup');
   };
 });
 
@@ -39,37 +39,31 @@ export async function storeMedia (file) {
       return reject(new Error('Sorry. Database is not working.'));
     }
 
-    const reader = new window.FileReader();
-    reader.onload = () => {
-      const data = {
-        created: new Date(),
-        media_type: file.type.split('/')[0],
-        mime_type: file.type,
-        source_url: reader.result,
-      };
+    // const reader = new window.FileReader();
+    // reader.onload = () => {
 
-      const trans = db.transaction('images', 'readwrite');
-      const req = trans.objectStore('images').add(data);
+    const trans = db.transaction('images', 'readwrite');
+    const req = trans.objectStore('images').add(file);
 
-      req.onsuccess = ev => {
-        const id = ev.target.result;
-        console.log('Media stored', id);
+    req.onsuccess = async ev => {
+      const id = ev.target.result;
+      console.log('Media stored <', id);
 
-        // data.source_url = 'https://www.hesdflkgsfkjdhlkjg.com/safa.jpg';
-        // delete data.data;
+      const savedMedia = await loadMedia(id);
+      console.log('Saved <', savedMedia.source_url);
 
-        const media = getMedia(100 + id, data);
-        resolve(media);
-      };
-
-      req.onerror = err => {
-        console.log('Storing media failed', err);
-        reject(err);
-      };
+      resolve(savedMedia);
     };
 
-    reader.readAsDataURL(file);
+    req.onerror = err => {
+      console.log('Storing media failed', err);
+      reject(err);
+    };
+    // };
+
+    // reader.readAsDataURL(file);
     // reader.readAsBinaryString(file);
+    // reader.readAsText(file);
   });
 }
 
@@ -77,6 +71,7 @@ export async function storeMedia (file) {
 // Retrieve media files from the database
 export async function loadMedia (id) {
   await pDb;
+  console.log('Loading media >', id);
 
   return new Promise((resolve, reject) => {
     if(!db) {
@@ -84,13 +79,21 @@ export async function loadMedia (id) {
     }
 
     const trans = db.transaction('images', 'readonly');
-    const req = trans.objectStore('images').get(id - 100);
+    const req = trans.objectStore('images').get(id);
 
     req.onsuccess = ev => {
-      const data = ev.target.result;
-      console.log('Media loaded', data);
+      const file = ev.target.result;
+      // console.log('Media loaded', file);
 
-      const media = getMedia(100 + id, data);
+      const data = {
+        media_type: file.type.split('/')[0],
+        mime_type: file.type,
+        source_url: URL.createObjectURL(file),
+      };
+
+      console.log('Load result >', data);
+
+      const media = getMedia(id, data);
       resolve(media);
     };
 

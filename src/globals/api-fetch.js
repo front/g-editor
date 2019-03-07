@@ -92,7 +92,8 @@ const apiFetch = async options => {
     }
     else if(method === 'POST') {
       const file = options.body.get('file');
-      res = file ? await storeMedia(file) : {};
+      res = await storeMedia(file);
+      res.id = res.id + 100;
     }
     else {
       res = mediaList;
@@ -100,7 +101,7 @@ const apiFetch = async options => {
   }
   else if(rt = route('/wp/v2/media/{id}', _path)) {
     const id = parseInt(rt.id);
-    res = id > 100 ? await loadMedia(id) : mediaList[id - 1];
+    res = id > 100 ? await loadMedia(id - 100) : mediaList[id - 1];
   }
 
   // Themes
