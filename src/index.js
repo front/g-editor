@@ -7,6 +7,12 @@ import Editor from './pages/editor';
 import Preview from './pages/preview';
 import * as serviceWorker from './serviceWorker';
 
+import { i18n } from '@frontkom/gutenberg-js';
+import translations from './translations/pt';
+
+const { setLocaleData } = i18n;
+setLocaleData(translations);
+
 ReactDOM.render((
   <BrowserRouter>
     <Switch>

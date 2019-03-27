@@ -1,3 +1,5 @@
+// import { i18n } from '@frontkom/gutenberg-js';
+// const { __ } = i18n;
 const date = (new Date()).toISOString();
 
 // Post types and Pages

@@ -1,5 +1,5 @@
 import React from 'react';
-import { data, editPost, domReady } from '@frontkom/gutenberg-js';
+import { data, editPost, domReady, i18n } from '@frontkom/gutenberg-js';
 import { types } from '../globals/fake-data';
 import { getPage } from '../globals/api-fetch';
 
@@ -7,6 +7,8 @@ import { getPage } from '../globals/api-fetch';
 import '@frontkom/gutenberg-js/build/css/block-library/style.css';
 import '@frontkom/gutenberg-js/build/css/style.css';
 import './editor.css';
+
+const { __ } = i18n;
 
 class Editor extends React.Component {
   constructor (props) {
@@ -30,7 +32,7 @@ class Editor extends React.Component {
       disableCustomColors: false,
       disablePostFormats: false,
       titlePlaceholder: 'Add title',
-      bodyPlaceholder: 'Insert your custom block',
+      bodyPlaceholder: __('Insert your custom block'),
       isRTL: false,
       autosaveInterval: 0,
       postLock: {
@@ -93,7 +95,7 @@ class Editor extends React.Component {
           }
 
           <button type="button" className="components-button is-tertiary"
-            onClick={ this.resetLocalStorage }>Clear page and reload</button>
+            onClick={ this.resetLocalStorage }>{ __('Clear page and reload') }</button>
         </div>
         <div id="editor" className="gutenberg__editor"></div>
       </React.Fragment>
