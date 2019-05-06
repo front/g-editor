@@ -54,19 +54,19 @@ export function createMedia (file) {
 mediaList.push(getMedia(1, {
   media_type: 'image',
   mime_type: 'image/jpeg',
-  source_url: `${origin}/img1.jpg`,
+  source_url: `${origin}/media/img1.jpg`,
 }));
 
 mediaList.push(getMedia(2, {
   media_type: 'image',
   mime_type: 'image/jpeg',
-  source_url: `${origin}/img2.jpeg`,
+  source_url: `${origin}/media/img2.jpeg`,
 }));
 
 mediaList.push(getMedia(3, {
   media_type: 'image',
   mime_type: 'image/png',
-  source_url: `${origin}/img3.png`,
+  source_url: `${origin}/media/img3.png`,
 }));
 
 
@@ -74,15 +74,15 @@ mediaList.push(getMedia(3, {
 mediaList.push(getMedia(4, {
   media_type: 'video',
   mime_type: 'video/mp4',
-  source_url: `${origin}/video1.mp4`,
-  thumbnail: `${origin}/video1-thumb.jpg`,
+  source_url: `${origin}/media/video1.mp4`,
+  thumbnail: `${origin}/media/video1-thumb.jpg`,
 }));
 
 mediaList.push(getMedia(5, {
   media_type: 'video',
   mime_type: 'video/mp4',
-  source_url: `${origin}/video2.mp4`,
-  thumbnail: `${origin}/video2-thumb.jpg`,
+  source_url: `${origin}/media/video2.mp4`,
+  thumbnail: `${origin}/media/video2-thumb.jpg`,
 }));
 
 
@@ -90,6 +90,6 @@ mediaList.push(getMedia(5, {
 mediaList.push(getMedia(6, {
   media_type: 'audio',
   mime_type: 'audio/mp3',
-  source_url: `${origin}/audio1.mp3`,
-  thumbnail: `${origin}/audio1-thumb.png`,
+  source_url: `${origin}/media/audio1.mp3`,
+  thumbnail: `${origin}/media/audio1-thumb.png`,
 }));
