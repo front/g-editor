@@ -6,10 +6,10 @@
   align-items: center;
   width: 100%;
   height: 56px;
-}
 
-.editor-nav * {
-  z-index: 99;
+  * {
+    z-index: 99;
+  }
 }
 
 @media (min-width: 782px) {

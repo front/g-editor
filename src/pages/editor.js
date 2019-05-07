@@ -2,9 +2,10 @@ import React from 'react';
 import { types } from '../globals/fake-data';
 import { getPage } from '../globals/api-fetch';
 
-import './editor.css';
+import './editor.scss';
 
 const { data, editPost, domReady } = window.wp;
+
 
 class Editor extends React.Component {
   constructor (props) {
@@ -34,11 +35,11 @@ class Editor extends React.Component {
       postLock: {
         isLocked: false,
       },
-      canPublish: false,
-      canSave: true,
-      canAutosave: true,
       mediaLibrary: true,
     };
+
+    // Disable publish sidebar
+    data.dispatch('core/editor').disablePublishSidebar();
 
     // Disable tips
     data.dispatch('core/nux').disableTips();
