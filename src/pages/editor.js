@@ -1,12 +1,10 @@
 import React from 'react';
-import { data, editPost, domReady } from '@frontkom/gutenberg-js';
 import { types } from '../globals/fake-data';
 import { getPage } from '../globals/api-fetch';
 
-// Gutenberg JS Style
-import '@frontkom/gutenberg-js/build/css/block-library/style.css';
-import '@frontkom/gutenberg-js/build/css/style.css';
 import './editor.css';
+
+const { data, editPost, domReady } = window.wp;
 
 class Editor extends React.Component {
   constructor (props) {

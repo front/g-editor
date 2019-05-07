@@ -150,6 +150,8 @@ module.exports = {
   },
   externals: {
     wp: 'wp',
+    react: 'React',
+    'react-dom': 'ReactDOM',
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -399,9 +401,9 @@ module.exports = {
       publicPath: publicPath,
     }),
     new CopyWebpackPlugin( [
-			{ from: `${blockDir}node_modules/tinymce/plugins`, to: 'static/js/plugins' },
-			{ from: `${blockDir}node_modules/tinymce/themes`, to: 'static/js/themes' },
-			{ from: `${blockDir}node_modules/tinymce/skins`, to: 'static/js/skins' },
+			{ from: `public/vendor/tinymce/plugins`, to: 'static/js/plugins' },
+			{ from: `public/vendor/tinymce/themes`, to: 'static/js/themes' },
+			{ from: `public/vendor/tinymce/skins`, to: 'static/js/skins' },
 		], {} ),
   ],
 
