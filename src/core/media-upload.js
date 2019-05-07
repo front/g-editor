@@ -1,5 +1,6 @@
 
 import { Component, Fragment } from 'react';
+import './media-library.scss';
 
 const { wp, lodash } = window;
 const { get } = lodash;
@@ -87,11 +88,6 @@ class MediaUpload extends Component {
   }
 
   render () {
-    if (!this.props.mediaLibrary) {
-      console.log('Media Library is deactivated');
-      return false;
-    }
-
     const { isVisible } = this.state;
 
     return <Fragment>
@@ -115,15 +111,11 @@ class MediaUpload extends Component {
 }
 
 
-export default withSelect(select => ({
-  mediaLibrary: select('core/editor').getEditorSettings().mediaLibrary,
-}))(MediaUpload);
+const replaceMediaUpload = () => MediaUpload;
 
 
 addFilter(
   'editor.MediaUpload',
   'core/edit-post/components/media-upload/replace-media-upload',
-  function () {
-    return props => <MediaUpload { ...props } mediaLibrary={ true } />;
-  }
+  replaceMediaUpload,
 );
