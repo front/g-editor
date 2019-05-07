@@ -23,7 +23,12 @@
     <script src="https://unpkg.com/react-dom@16.6.3/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/moment@2.22.1/min/moment.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/lodash@4.17.11/lodash.min.js"></script>
+    <script src="%PUBLIC_URL%/vendor/no-conflict.js"></script>
+    <script src="%PUBLIC_URL%/vendor/regenerator-runtime.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="%PUBLIC_URL%/vendor/tinymce/tinymce.min.js"></script>
 
     <style type="text/css">
       <%= htmlWebpackPlugin.options.blockStyle %>
@@ -34,6 +39,81 @@
     <title>g-editor</title>
   </head>
   <body style="margin: 0">
+    <!-- Gutenberg scripts -->
+    <script src="%PUBLIC_URL%/vendor/gutenberg-js/wp.js"></script>
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/dom-ready/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/a11y/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/escape-html/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/element/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/is-shallow-equal/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/compose/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/hooks/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/deprecated/index.js"></script>
+
+    <!-- <script src="%PUBLIC_URL%/vendor/gutenberg/polyfill/index.js"></script> -->
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/priority-queue/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/redux-routine/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/data/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg-js/data.js"></script>
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/i18n/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/rich-text/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/annotations/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/url/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/api-fetch/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg-js/api-fetch.js"></script>
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/autop/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/blob/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/block-serialization-default-parser/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/dom/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/html-entities/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/shortcode/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/blocks/index.js"></script>
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/keycodes/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/components/index.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/components/style.css">
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/core-data/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/token-list/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/viewport/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/wordcount/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/block-editor/index.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/block-editor/style.css">
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/date/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/notices/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/nux/index.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/nux/style.css">
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/editor/index.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/editor/style.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/editor/editor-styles.css">
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg-js/editor.js"></script>
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/block-library/index.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/block-library/style.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/block-library/theme.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/block-library/editor.css">
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/block-serialization-spec-parser/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/plugins/index.js"></script>
+    <script src="%PUBLIC_URL%/vendor/gutenberg/edit-post/index.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/edit-post/style.css">
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/edit-widgets/index.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/edit-widgets/style.css">
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/format-library/index.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/format-library/style.css">
+
+    <script src="%PUBLIC_URL%/vendor/gutenberg/list-reusable-blocks/index.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg/list-reusable-blocks/style.css">
+
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
