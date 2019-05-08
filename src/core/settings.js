@@ -19,19 +19,3 @@ window.postboxes = window.postboxes || {
     console.log('args', args);
   },
 };
-
-// editorL10n
-window.wpEditorL10n = window.wpEditorL10n || {
-  tinymce: {
-    baseUrl: 'vendor/tinymce',
-    settings: {
-      external_plugins: [],
-      plugins: 'charmap,colorpicker,hr,lists,media,paste,tabfocus,textcolor,fullscreen', // ,wordpress,wpautoresize,wpeditimage,wpemoji,wpgallery,wplink,wpdialogs,wptextpattern,wpview',
-      toolbar1: 'formatselect,bold,italic,bullist,numlist,blockquote,alignleft,aligncenter,alignright,link,unlink,wp_more,spellchecker,kitchensink',
-      toolbar2: 'strikethrough,hr,forecolor,pastetext,removeformat,charmap,outdent,indent,undo,redo,wp_help',
-      toolbar3: '',
-      toolbar4: '',
-    },
-    suffix: '.min',
-  },
-};

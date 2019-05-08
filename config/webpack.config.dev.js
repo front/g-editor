@@ -13,7 +13,6 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
-const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 
 // Block Script and Style
 const blockDir = process.env.BLOCK_DIR ? process.env.BLOCK_DIR + '/' : '';
@@ -400,11 +399,6 @@ module.exports = {
       fileName: 'asset-manifest.json',
       publicPath: publicPath,
     }),
-    new CopyWebpackPlugin( [
-			{ from: `public/vendor/tinymce/plugins`, to: 'static/js/plugins' },
-			{ from: `public/vendor/tinymce/themes`, to: 'static/js/themes' },
-			{ from: `public/vendor/tinymce/skins`, to: 'static/js/skins' },
-		], {} ),
   ],
 
   // Some libraries import Node modules but don't use them in the browser.
