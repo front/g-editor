@@ -1,6 +1,6 @@
 import React from 'react';
-import { types } from '../globals/fake-data';
 import { getPage } from '../globals/api-fetch';
+import types from '../data/types';
 
 import './editor.scss';
 
@@ -80,7 +80,7 @@ class Editor extends React.Component {
       <React.Fragment>
         <div className="editor-nav">
           {
-            Object.keys(types).map(type => {
+            ['post', 'page'].map(type => {
               return (
                 <button
                   key={ type }
