@@ -64,3 +64,21 @@ export const pages = {
     },
   },
 };
+
+
+export function getPage (type = 'page') {
+  return JSON.parse(localStorage.getItem('g-editor-page')) || pages[type];
+}
+
+
+export function savePage (data, type = 'page') {
+  const item = {
+    ...getPage(type),
+    ...data,
+    content: {
+      raw: data.content,
+      rendered: data.content.replace(/(<!--.*?-->)/g, ''),
+    },
+  };
+  localStorage.setItem('g-editor-page', JSON.stringify(item));
+}

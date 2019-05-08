@@ -1,6 +1,6 @@
 import React from 'react';
-import { getPage } from '../globals/api-fetch';
 import types from '../data/types';
+import { getPage } from '../globals/fake-data';
 
 import './editor.scss';
 

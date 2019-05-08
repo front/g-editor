@@ -1,5 +1,6 @@
 import React from 'react';
-import { getPage } from '../globals/api-fetch';
+import { getPage } from '../globals/fake-data';
+
 
 class Preview extends React.Component {
   constructor (props) {
