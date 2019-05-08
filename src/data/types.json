@@ -19,6 +19,7 @@
       "category",
       "post_tag"
     ],
+    "viewable": "true",
     "rest_base": "posts",
     "_links": {
       "collection": [
@@ -58,6 +59,7 @@
       "title": false
     },
     "taxonomies": [],
+    "viewable": "true",
     "rest_base": "pages",
     "_links": {
       "collection": [
