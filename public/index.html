@@ -23,8 +23,7 @@
     <script src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/moment@2.24.0/min/moment.min.js"></script>
     <script src="https://unpkg.com/lodash@4.17.11/lodash.min.js"></script>
-    <script src="%PUBLIC_URL%/vendor/no-conflict.js"></script>
-    <script src="%PUBLIC_URL%/vendor/wp-polyfill.min.js"></script>
+    <script>window.lodash = window._.noConflict();</script>
 
     <style type="text/css">
       <%= htmlWebpackPlugin.options.blockStyle %>
@@ -36,8 +35,9 @@
   </head>
   <body style="margin: 0">
     <!-- Gutenberg -->
-    <script src="%PUBLIC_URL%/vendor/gutenberg.js"></script>
-    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/gutenberg.css">
+    <script src="%PUBLIC_URL%/vendor/wp-polyfill.min.js"></script>
+    <script src="%PUBLIC_URL%/vendor/wp-gutenberg.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/vendor/wp-gutenberg.css">
 
     <noscript>
       You need to enable JavaScript to run this app.

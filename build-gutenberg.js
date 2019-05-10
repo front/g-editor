@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 
 (async () => {
-  if(!await fs.pathExists('gutenberdg')) {
+  if(!await fs.pathExists('gutenberg')) {
     return console.log('Error: Gutenberg source folder is not present.');
   }
 
@@ -56,8 +56,8 @@ const fs = require('fs-extra');
   }
 
   // Write to file
-  await fs.writeFile(path.resolve('public', 'vendor', 'gutenberg.js'), script);
-  await fs.writeFile(path.resolve('public', 'vendor', 'gutenberg.css'), style);
+  await fs.writeFile(path.resolve('public', 'vendor', 'wp-gutenberg.js'), script);
+  await fs.writeFile(path.resolve('public', 'vendor', 'wp-gutenberg.css'), style);
 
   console.log('Gutenberg vendor files compiled.');
 })();
