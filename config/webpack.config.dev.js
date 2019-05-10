@@ -148,7 +148,8 @@ module.exports = {
     runtimeChunk: true,
   },
   externals: {
-    wp: 'wp',
+    lodash: 'lodash',
+    moment: 'moment',
     react: 'React',
     'react-dom': 'ReactDOM',
   },
