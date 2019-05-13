@@ -8,7 +8,7 @@ window.userSettings = window.userSettings || {
 
 // API settings
 window.wpApiSettings = window.wpApiSettings || {};
-window.wpApiSettings.root = window.wpApiSettings.root || window.location.origin;
+window.wpApiSettings.root = window.wpApiSettings.root || (window.location.origin + '/');
 window.wpApiSettings.nonce = window.wpApiSettings.nonce || '123456789';
 window.wpApiSettings.versionString = window.wpApiSettings.versionString || 'wp/v2/';
 
