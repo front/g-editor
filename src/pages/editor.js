@@ -1,6 +1,6 @@
 import React from 'react';
 import types from '../data/types';
-import { getPage } from '../globals/fake-data';
+import { changeType } from '../globals/fake-data';
 
 import './editor.scss';
 
@@ -61,14 +61,9 @@ class Editor extends React.Component {
 
   changePostType = (ev, type) => {
     ev.preventDefault();
-    const slug = type.slice(0, -1);
     // update postType in localStorage before reload the editor
-    const item = {
-      ...getPage(slug),
-      type: slug,
-    };
-
-    localStorage.setItem('g-editor-page', JSON.stringify(item));
+    const slug = type.slice(0, -1);
+    changeType(slug);
 
     window.location.replace(type);
   };

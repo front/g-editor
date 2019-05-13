@@ -74,11 +74,26 @@ export function getPage (type = 'page') {
 export function savePage (data, type = 'page') {
   const item = {
     ...getPage(type),
-    ...data,
+    id: data.id,
+    title: {
+      raw: data.title,
+      rendered: data.title,
+    },
+    excerpt: {
+      raw: data.excerpt,
+      rendered: data.excerpt,
+    },
     content: {
       raw: data.content,
       rendered: data.content.replace(/(<!--.*?-->)/g, ''),
     },
   };
+  localStorage.setItem('g-editor-page', JSON.stringify(item));
+}
+
+
+export function changeType (type) {
+  const item = getPage(type);
+  item.type = type;
   localStorage.setItem('g-editor-page', JSON.stringify(item));
 }
