@@ -146,7 +146,7 @@ export default [
     path: '/wp/v2/taxonomies',
     method: '*',
     handler () {
-      return taxonomies;
+      return new window.Response(JSON.stringify(taxonomies));
     },
   },
   {
@@ -171,7 +171,7 @@ export default [
     path: '/wp/v2/users/',
     method: '*',
     handler () {
-      return users;
+      return new window.Response(JSON.stringify(users));
     },
   },
   {
