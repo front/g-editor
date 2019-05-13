@@ -75,19 +75,20 @@ export function savePage (data, type = 'page') {
   const item = {
     ...getPage(type),
     id: data.id,
-    title: {
+  };
+
+  if(data.title) {
+    item.title = {
       raw: data.title,
       rendered: data.title,
-    },
-    excerpt: {
-      raw: data.excerpt,
-      rendered: data.excerpt,
-    },
-    content: {
+    };
+  }
+  if(data.content) {
+    item.content = {
       raw: data.content,
       rendered: data.content.replace(/(<!--.*?-->)/g, ''),
-    },
-  };
+    };
+  }
   localStorage.setItem('g-editor-page', JSON.stringify(item));
 }
 
