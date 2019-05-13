@@ -181,4 +181,15 @@ export default [
       return users[0] || {};
     },
   },
+
+  // Block renderer
+  {
+    path: '/wp/v2/block-renderer/{block*}',
+    method: '*',
+    handler ({ params }) {
+      return {
+        rendered: `<div>Sorry. There is no server-side rendering available for "${params.block}".</div>`,
+      };
+    },
+  },
 ];
