@@ -2,21 +2,28 @@
 import routes from './api-routes';
 
 
-function mathRoute (pattern, pathname) {
+function matchRoute (pattern, pathname) {
   const res = {};
-  const r = pattern.split('/'), l = r.length, p = pathname.split('/');
+  const r = pattern.split('/'), p = pathname.split('/');
+  const l = Math.max(r.length, p.length);
+
   let i = 0;
   for(; i < l; i++) {
     if(r[i] === p[i]) {
       continue;
     }
-    if(r[i].charAt(0) === '{' && r[i].charAt(r[i].length - 1) === '}' && p[i]) {
-      res[r[i].substring(1, r[i].length - 1)] = p[i];
+    if(!r[i] || !p[i]) {
+      return false;
+    }
+    if(r[i].charAt(0) === '{' && r[i].charAt(r[i].length - 1) === '}') {
+      const param = r[i].slice(1, -1);
+      if(param.includes('*')) {
+        res[param.replace('*', '')] = p.slice(i).join('/');
+        return res;
+      }
+      res[param] = p[i];
       continue;
     }
-    return false;
-  }
-  if(p[i]) {
     return false;
   }
   return res;
@@ -24,11 +31,11 @@ function mathRoute (pattern, pathname) {
 
 function matchRouteList (options, pathname) {
   if(typeof options === 'string') {
-    return mathRoute(options, pathname);
+    return matchRoute(options, pathname);
   }
 
   for(const pattern of options) {
-    const params = mathRoute(pattern, pathname);
+    const params = matchRoute(pattern, pathname);
     if(params) {
       return params;
     }

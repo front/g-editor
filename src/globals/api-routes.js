@@ -168,7 +168,7 @@ export default [
 
   // Users
   {
-    path: '/wp/v2/users',
+    path: '/wp/v2/users/',
     method: null,
     handler () {
       return users;
