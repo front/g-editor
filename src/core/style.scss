@@ -205,8 +205,10 @@
     left: -3px;
   }
 
-  // Hide all links to .php
-  a[href^="edit.php"], a[href^="post.php"] {
+  // Hide links to php pages
+  a[href^="edit.php"],
+  a[href^="post.php"],
+  a[href^="options-permalink.php"] {
     display: none;
   }
 
