@@ -192,4 +192,13 @@ export default [
       };
     },
   },
+
+  // Search
+  {
+    path: '/wp/v2/search',
+    method: '*',
+    handler () {
+      return [];
+    },
+  },
 ];
