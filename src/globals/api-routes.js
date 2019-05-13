@@ -13,7 +13,7 @@ export default [
   // Pages and posts
   {
     path: '/wp/v2/pages',
-    method: null,
+    method: '*',
     handler () {
       return [ getPage() ];
     },
@@ -34,7 +34,7 @@ export default [
       '/wp/v2/pages/{id}',
       '/wp/v2/pages/{id}/autosaves',
     ],
-    method: null,
+    method: '*',
     handler () {
       return getPage();
     },
@@ -42,7 +42,7 @@ export default [
 
   {
     path: '/wp/v2/posts',
-    method: null,
+    method: '*',
     handler () {
       return [ getPage('post') ];
     },
@@ -63,7 +63,7 @@ export default [
       '/wp/v2/posts/{id}',
       '/wp/v2/posts/{id}/autosaves',
     ],
-    method: null,
+    method: '*',
     handler () {
       return getPage('post');
     },
@@ -93,14 +93,14 @@ export default [
   },
   {
     path: '/wp/v2/media',
-    method: null,
+    method: '*',
     handler () {
       return mediaList;
     },
   },
   {
     path: '/wp/v2/media/{id}',
-    method: null,
+    method: '*',
     handler ({ params }) {
       return mediaList[+params.id - 1];
     },
@@ -110,14 +110,14 @@ export default [
   // Types
   {
     path: '/wp/v2/types',
-    method: null,
+    method: '*',
     handler () {
       return types;
     },
   },
   {
     path: '/wp/v2/types/{type}',
-    method: null,
+    method: '*',
     handler ({ params }) {
       return types[params.type] || {};
     },
@@ -126,7 +126,7 @@ export default [
   // Blocks
   {
     path: '/wp/v2/blocks',
-    method: null,
+    method: '*',
     handler () {
       return [];
     },
@@ -135,7 +135,7 @@ export default [
   // Themes
   {
     path: '/wp/v2/themes',
-    method: null,
+    method: '*',
     handler () {
       return themes;
     },
@@ -144,14 +144,14 @@ export default [
   // Taxonomies
   {
     path: '/wp/v2/taxonomies',
-    method: null,
+    method: '*',
     handler () {
       return taxonomies;
     },
   },
   {
     path: '/wp/v2/taxonomies/{type}',
-    method: null,
+    method: '*',
     handler ({ params }) {
       return taxonomies[params.type] || {};
     },
@@ -160,7 +160,7 @@ export default [
   // Categories
   {
     path: '/wp/v2/categories',
-    method: null,
+    method: '*',
     handler () {
       return categories;
     },
@@ -169,14 +169,14 @@ export default [
   // Users
   {
     path: '/wp/v2/users/',
-    method: null,
+    method: '*',
     handler () {
       return users;
     },
   },
   {
     path: '/wp/v2/users/{name}',
-    method: null,
+    method: '*',
     handler () {
       return users[0] || {};
     },

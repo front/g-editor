@@ -44,7 +44,7 @@ function matchRouteList (options, pathname) {
 }
 
 function matchMethod (source, target) {
-  return !target || target === source || target.includes(source);
+  return !target || target === '*' || target === source || target.includes(source);
 }
 
 function parseQS (qs) {
@@ -57,7 +57,7 @@ function parseQS (qs) {
 
 
 const apiFetch = options => {
-  const { method = 'GET', path, data, body } = options;
+  const { method = 'GET', path, data, body, url } = options;
   const [ pathname, _qs ] = path.split('?');
   const query = parseQS(_qs);
   const payload = data || body;
@@ -69,7 +69,7 @@ const apiFetch = options => {
     if(params) {
       if(matchMethod(method, r.method)) {
         return r.handler({
-          method, pathname, params, query, payload,
+          method, url, pathname, params, query, payload,
         });
       }
     }
