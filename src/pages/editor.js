@@ -31,7 +31,7 @@ class Editor extends React.Component {
       titlePlaceholder: 'Add title',
       bodyPlaceholder: 'Insert your custom block',
       isRTL: false,
-      autosaveInterval: 0,
+      autosaveInterval: 3,
       postLock: {
         isLocked: false,
       },
