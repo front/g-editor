@@ -24,10 +24,16 @@ your-custom-block
   └── ...
 ```
 
+
 ## g-editor and Gutenberg-js
 
 Since version 1.0, `g-editor` no longer depends on `Gutenberg-js`.
-It includes the source `Gutenberg` packages directly.
+It now includes the source `Gutenberg` packages directly.
+
+## Current Gutenberg version
+
+[v5.7.0](https://github.com/WordPress/gutenberg/releases/tag/v5.7.0)
+
 
 ## Assets
 

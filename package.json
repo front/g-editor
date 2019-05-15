@@ -68,6 +68,14 @@
     "lint:fix": "eslint . --fix",
     "deploy": "npm run lint && npm publish --access public"
   },
+  "homepage": "https://github.com/front/g-editor#readme",
+  "bugs": {
+    "url": "https://github.com/front/g-editor/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/front/g-editor.git"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
