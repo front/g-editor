@@ -24,8 +24,14 @@ your-custom-block
   └── ...
 ```
 
+## g-editor and Gutenberg-js
+
+Since version 1.0, `g-editor` no longer depends on `Gutenberg-js`.
+It includes the source `Gutenberg` packages directly.
+
 ## Assets
 
 The sample videos are a courtesy of [Pixabay](https://pixabay.com/):
+
   * [https://pixabay.com/en/videos/cute-cat-funny-cat-kitten-domestic-3092/](https://pixabay.com/en/videos/cute-cat-funny-cat-kitten-domestic-3092/)
   * [https://pixabay.com/en/videos/cat-cat-thailand-small-indian-civet-1297/](https://pixabay.com/en/videos/cat-cat-thailand-small-indian-civet-1297/)
