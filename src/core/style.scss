@@ -1,0 +1,219 @@
+
+@media (min-width: 600px) {
+  body .gutenberg__editor {
+    position: relative;
+  }
+}
+
+@media (min-width: 782px) {
+  .gutenberg__editor .edit-post-sidebar {
+    top: 56px;
+  }
+}
+
+.gutenberg__editor {
+  position: relative;
+
+  * {
+    box-sizing: border-box;
+    &:focus {
+      outline-width: 0;
+    }
+  }
+
+  input {
+    margin: 1px;
+  }
+
+  input[type=checkbox] {
+    border: 1px solid #b4b9be;
+    background: #fff;
+    color: #555;
+    clear: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 0;
+    height: 16px;
+    margin: -4px 4px 0 0;
+    outline: 0;
+    padding: 0!important;
+    text-align: center;
+    vertical-align: middle;
+    width: 16px;
+    min-width: 16px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+    transition: .05s border-color ease-in-out;
+  }
+
+  .edit-post-layout {
+    padding-top: 0;
+
+    @media (min-width: 960px) {
+      padding-top: 0;
+    }
+    @media (min-width: 600px) {
+      padding-top: 0;
+    }
+
+    .edit-post-header,
+    .edit-post-sidebar,
+    .components-popover {
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+      font-size: 13px;
+    }
+
+    .edit-post-header {
+      @media (min-width: 782px) {
+        position: sticky;
+        left: 0;
+        top: 0;
+      }
+    }
+
+    .components-notice-list {
+      @media (min-width: 782px) {
+        left: 0;
+      }
+
+      .notice,
+      div.error,
+      div.updated {
+        background: #fff;
+        border-left: 4px solid #fff;
+      }
+
+      .notice-alt {
+        box-shadow: none;
+      }
+
+      .notice-success.notice-alt {
+        background-color: #ecf7ed;
+      }
+
+      .notice-success,
+      div.updated {
+        border-left-color: #46b450;
+      }
+
+      .notice-dismiss {
+        position: absolute;
+        top: 0;
+        right: 1px;
+        border: none;
+        margin: 5px;
+        padding: 9px;
+        background: 0 0;
+        color: #72777c;
+        cursor: pointer;
+      }
+    }
+
+    .edit-post-text-editor {
+      @media (min-width: 960px) {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .edit-post-text-editor__body {
+        padding-top: 0px;
+        @media (min-width: 782px) {
+          padding-top: 0px;
+        }
+        @media (min-width: 600px) {
+          padding-top: 0px;
+        }
+        .editor-post-title {
+          @media (min-width: 600px) {
+            padding: 5px 0;
+          }
+        }
+      }
+    }
+
+    .edit-post-sidebar {
+      .edit-post-sidebar__panel-tabs {
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .screen-reader-text,
+  .screen-reader-text span,
+  .ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal!important;
+  }
+
+  .edit-post-visual-editor {
+    font-family: inherit;
+
+    p {
+      font-family: inherit;
+    }
+
+    .editor-post-title,
+    .editor-post-title__block,
+    .editor-block-list__block,
+    .editor-default-block-appender {
+      max-width: initial;
+      margin-left: 35px;
+      margin-right: 35px;
+    }
+
+    .editor-post-title>div {
+      @media (min-width: 600px) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
+    .editor-post-title {
+      .editor-post-title__input {
+        font-family: inherit;
+      }
+    }
+
+    .editor-block-list__layout {
+      .editor-block-list__block {
+        &.is-selected,
+        &.is-hovered {
+          outline-width: 0;
+        }
+      }
+
+      .editor-default-block-appender__content {
+        font-family: inherit;
+      }
+    }
+  }
+
+  .components-color-palette__item:focus:after {
+    top: -3px;
+    left: -3px;
+  }
+
+  // Hide links to php pages
+  a[href^="edit.php"],
+  a[href^="post.php"],
+  a[href^="options-permalink.php"] {
+    display: none;
+  }
+
+  // Hide publish button
+  .editor-post-publish-button {
+    display: none;
+  }
+}

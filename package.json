@@ -7,7 +7,6 @@
   "main": "build/index.js",
   "dependencies": {
     "@babel/core": "7.2.2",
-    "@frontkom/gutenberg-js": "^4.0.0",
     "@svgr/webpack": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -18,7 +17,6 @@
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.2",
-    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "1.0.0",
     "dotenv": "6.2.0",
     "dotenv-expand": "4.2.0",
@@ -37,6 +35,7 @@
     "jest-pnp-resolver": "1.0.2",
     "jest-resolve": "23.6.0",
     "mini-css-extract-plugin": "0.4.3",
+    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
     "postcss-flexbugs-fixes": "4.1.0",

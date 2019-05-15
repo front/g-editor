@@ -1,12 +1,11 @@
 import React from 'react';
-import { data, editPost, domReady } from '@frontkom/gutenberg-js';
-import { types } from '../globals/fake-data';
-import { getPage } from '../globals/api-fetch';
+import types from '../data/types';
+import { changeType } from '../globals/fake-data';
 
-// Gutenberg JS Style
-import '@frontkom/gutenberg-js/build/css/block-library/style.css';
-import '@frontkom/gutenberg-js/build/css/style.css';
-import './editor.css';
+import './editor.scss';
+
+const { data, editPost, domReady } = window.wp;
+
 
 class Editor extends React.Component {
   constructor (props) {
@@ -32,22 +31,22 @@ class Editor extends React.Component {
       titlePlaceholder: 'Add title',
       bodyPlaceholder: 'Insert your custom block',
       isRTL: false,
-      autosaveInterval: 0,
+      autosaveInterval: 3,
       postLock: {
         isLocked: false,
       },
-      canPublish: false,
-      canSave: true,
-      canAutosave: true,
       mediaLibrary: true,
     };
+
+    // Disable publish sidebar
+    data.dispatch('core/editor').disablePublishSidebar();
 
     // Disable tips
     data.dispatch('core/nux').disableTips();
 
     // Initialize the editor
-    window._wpLoadGutenbergEditor = new Promise(function (resolve) {
-      domReady(function () {
+    window._wpLoadGutenbergEditor = new Promise(resolve => {
+      domReady(() => {
         resolve(editPost.initializeEditor('editor', postType, 1, settings, {}));
       });
     });
@@ -62,14 +61,9 @@ class Editor extends React.Component {
 
   changePostType = (ev, type) => {
     ev.preventDefault();
-    const slug = type.slice(0, -1);
     // update postType in localStorage before reload the editor
-    const item = {
-      ...getPage(slug),
-      type: slug,
-    };
-
-    localStorage.setItem('g-editor-page', JSON.stringify(item));
+    const slug = type.slice(0, -1);
+    changeType(slug);
 
     window.location.replace(type);
   };
@@ -81,7 +75,7 @@ class Editor extends React.Component {
       <React.Fragment>
         <div className="editor-nav">
           {
-            Object.keys(types).map(type => {
+            ['post', 'page'].map(type => {
               return (
                 <button
                   key={ type }

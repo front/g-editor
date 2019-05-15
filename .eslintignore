@@ -5,3 +5,5 @@ node_modules/*
 config/*
 scripts/*
 src/serviceWorker.js
+
+public/vendor/gutenberg/*
