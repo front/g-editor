@@ -1,1 +1,1 @@
-["lodash","react","react-dom","wp-escape-html"]
+["lodash","react","react-dom","wp-escape-html","wp-polyfill"]

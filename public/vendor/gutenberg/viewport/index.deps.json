@@ -1,1 +1,1 @@
-["lodash","wp-compose","wp-data"]
+["lodash","wp-compose","wp-data","wp-polyfill"]
