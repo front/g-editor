@@ -1,5 +1,13 @@
 # g-editor changelog
 
+## 1.0.0
+
+### Changed
+- Removed Gutenberg-JS dependency
+- Added scripts from Gutenberg-js
+- Load Gutenberg packages directly
+
+
 ## 0.4.0
 
 ### Added
