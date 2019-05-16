@@ -7,10 +7,12 @@
   "main": "build/index.js",
   "files": [
     "build/",
-    "/config",
-    "/public",
-    "/scripts",
-    "/src"
+    "config/",
+    "public/",
+    "scripts/",
+    "src/",
+    ".eslintignore",
+    ".eslintrc"
   ],
   "dependencies": {
     "@babel/core": "7.2.2",
