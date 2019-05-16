@@ -1,5 +1,14 @@
 # g-editor changelog
 
+## 1.1.0
+
+### Added
+- Allow a target build folder to be set with an environment var
+
+### Changed
+- Only send essential folders to NPM
+
+
 ## 1.0.0
 
 ### Changed
