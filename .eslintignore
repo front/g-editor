@@ -1,9 +1,7 @@
-# /node_modules/* and /bower_components/* in the project root are ignored by default
 
 build/*
-node_modules/*
 config/*
+node_modules/*
+public/vendor/*
 scripts/*
 src/serviceWorker.js
-
-public/vendor/gutenberg/*

@@ -5,6 +5,9 @@
   "author": "Frontkom <frontkom@frontkom.no>",
   "private": false,
   "main": "build/index.js",
+  "files": [
+    "build/", "/config", "/public", "/scripts", "/src"
+  ],
   "dependencies": {
     "@babel/core": "7.2.2",
     "@svgr/webpack": "2.4.1",
