@@ -1,6 +1,8 @@
 import React from 'react';
 import { getPage } from '../globals/fake-data';
 
+const { domReady } = window.wp;
+
 
 class Preview extends React.Component {
   constructor (props) {
@@ -32,7 +34,20 @@ class Preview extends React.Component {
         rendered: page.content ? page.content.rendered : '',
       });
     }
+
+    // Load the frontend scripts
+    domReady(() => {
+      const code = document.getElementById('frontend-scripts');
+      if(code && code.innerText) {
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = `data:text/javascript;base64,${code.innerText}`;
+        document.body.appendChild(script);
+      }
+    });
   }
+
   render () {
     const { rendered } = this.state;
     return rendered ?
