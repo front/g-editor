@@ -29,6 +29,7 @@ if (blockDir) {
     const script = `${blockDir}build/index.js`;
     const style  = `${blockDir}build/style.css`;
     const editor = `${blockDir}build/editor.css`;
+    const frontend = `${blockDir}build/scripts.js`;
 
     if (fs.existsSync(script) && fs.lstatSync(script).isFile()) {
       blockVars.blockScript = fs.readFileSync(script).toString();
@@ -40,6 +41,11 @@ if (blockDir) {
 
     if (fs.existsSync(editor) && fs.lstatSync(editor).isFile()) {
       blockVars.blockEditorStyle = fs.readFileSync(editor).toString();
+    }
+
+    if (fs.existsSync(frontend) && fs.lstatSync(frontend).isFile()) {
+      const frontendScript = fs.readFileSync(frontend).toString();
+      blockVars.frontendScript = Buffer.from(frontendScript).toString('base64');
     }
   }
 }
