@@ -86,7 +86,7 @@ export function savePage (data, type = 'page') {
   if(data.content) {
     item.content = {
       raw: data.content,
-      rendered: data.content.replace(/(<!--.*?-->)/g, ''),
+      // rendered: data.content.replace(/(<!--.*?-->)/g, ''),
     };
   }
   localStorage.setItem('g-editor-page', JSON.stringify(item));

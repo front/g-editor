@@ -29,7 +29,7 @@ class Preview extends React.Component {
     const page = getPage();
     if (page) {
       this.setState({
-        rendered: page.content ? page.content.rendered : '',
+        rendered: page.content ? page.content.raw.replace(/(<!--.*?-->)/g, '') : '',
       });
     }
   }
