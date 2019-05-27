@@ -29,11 +29,14 @@ class Preview extends React.Component {
 
   componentDidMount () {
     const page = getPage();
-    if (page) {
-      this.setState({
-        rendered: page.content ? page.content.raw.replace(/(<!--.*?-->)/g, '') : '',
-      });
-    }
+    const rendered = (
+      page && page.content && page.content.raw &&
+      page.content.raw.replace(/(<!--.*?-->)/g, '')
+    ) || '';
+
+    this.setState({
+      rendered,
+    });
 
     domReady(() => {
       // Load the frontend scripts
@@ -47,7 +50,7 @@ class Preview extends React.Component {
       }
 
       // Load html blocks scripts
-      const html = this.state.rendered.trim();
+      const html = rendered.trim();
       const container = document.createElement('div');
       container.innerHTML = html;
 
