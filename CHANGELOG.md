@@ -1,5 +1,14 @@
 # g-editor changelog
 
+## 1.2.0
+
+### Added
+- Support for frontend scripts
+
+### Changed
+- Fixed default public URL on production build
+
+
 ## 1.1.0
 
 ### Added
