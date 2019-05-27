@@ -1,6 +1,8 @@
 import React from 'react';
 import { getPage } from '../globals/fake-data';
 
+const { domReady } = window.wp;
+
 
 class Preview extends React.Component {
   constructor (props) {
@@ -32,7 +34,44 @@ class Preview extends React.Component {
         rendered: page.content ? page.content.raw.replace(/(<!--.*?-->)/g, '') : '',
       });
     }
+
+    domReady(() => {
+      // Load the frontend scripts
+      const code = document.getElementById('frontend-scripts');
+      if (code && code.innerText) {
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = `data:text/javascript;base64,${code.innerText}`;
+        document.body.appendChild(script);
+      }
+
+      // Load html blocks scripts
+      const html = this.state.rendered.trim();
+      const container = document.createElement('div');
+      container.innerHTML = html;
+
+      const scripts = container.getElementsByTagName('script');
+      for(const s of scripts) {
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+
+        if (s.innerText) {
+          // inner script
+          const frontendScript = Buffer.from(s.innerText).toString('base64');
+          script.src = `data:text/javascript;base64,${frontendScript}`;
+        }
+        else {
+          // or from external src
+          script.src = s.src;
+        }
+
+        document.body.appendChild(script);
+      }
+    });
   }
+
   render () {
     const { rendered } = this.state;
     return rendered ?
