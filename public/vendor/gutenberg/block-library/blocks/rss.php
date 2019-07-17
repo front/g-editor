@@ -69,7 +69,7 @@ function gutenberg_render_block_core_rss( $attributes ) {
 			$excerpt = esc_attr( wp_trim_words( $excerpt, $attributes['excerptLength'], ' [&hellip;]' ) );
 
 			// Change existing [...] to [&hellip;].
-			if ( '[...]' == substr( $excerpt, -5 ) ) {
+			if ( '[...]' === substr( $excerpt, -5 ) ) {
 				$excerpt = substr( $excerpt, 0, -5 ) . '[&hellip;]';
 			}
 
@@ -109,7 +109,8 @@ function gutenberg_render_block_core_rss( $attributes ) {
  * Registers the `core/rss` block on server.
  */
 function gutenberg_register_block_core_rss() {
-	register_block_type( 'core/rss',
+	register_block_type(
+		'core/rss',
 		array(
 			'attributes'      => array(
 				'align'          => array(
