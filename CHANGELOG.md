@@ -1,5 +1,14 @@
 # g-editor changelog
 
+## 1.3.0
+
+### Added
+- Read block config from the gutenbergCloud settings (if present)
+
+### Changed
+- Update Gutenberg to latest version (6.1.1)
+
+
 ## 1.2.0
 
 ### Added
