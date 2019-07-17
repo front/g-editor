@@ -15,36 +15,8 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 
 // Block Script and Style
-const blockDir = process.env.BLOCK_DIR ? process.env.BLOCK_DIR + '/' : '';
-const blockVars = {};
+const blockVars = require('./block-vars')();
 
-if (blockDir) {
-  const fs = require('fs');
-
-  if (fs.lstatSync(blockDir).isDirectory()) {
-    const script = `${blockDir}build/index.js`;
-    const style  = `${blockDir}build/style.css`;
-    const editor = `${blockDir}build/editor.css`;
-    const frontend = `${blockDir}build/scripts.js`;
-
-    if (fs.existsSync(script) && fs.lstatSync(script).isFile()) {
-      blockVars.blockScript = fs.readFileSync(script).toString();
-    }
-
-    if (fs.existsSync(style) && fs.lstatSync(style).isFile()) {
-      blockVars.blockStyle = fs.readFileSync(style).toString();
-    }
-
-    if (fs.existsSync(editor) && fs.lstatSync(editor).isFile()) {
-      blockVars.blockEditorStyle = fs.readFileSync(editor).toString();
-    }
-
-    if (fs.existsSync(frontend) && fs.lstatSync(frontend).isFile()) {
-      const frontendScript = fs.readFileSync(frontend).toString();
-      blockVars.frontendScript = Buffer.from(frontendScript).toString('base64');
-    }
-  }
-}
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
