@@ -5,6 +5,6 @@
   const storageKey = `WP_DATA_USER_${uid}`;
 
   use(plugins.persistence, { storageKey });
-  use(plugins.controls);
+  plugins.persistence.__unstableMigrate({ storageKey });
 
 })(window.wp);

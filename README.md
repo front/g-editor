@@ -32,7 +32,7 @@ It now includes the source `Gutenberg` packages directly.
 
 ## Current Gutenberg version
 
-[v6.1.1](https://github.com/WordPress/gutenberg/releases/tag/v6.1.1)
+[v6.4.0](https://github.com/WordPress/gutenberg/releases/tag/v6.4.0)
 
 
 ## Assets
