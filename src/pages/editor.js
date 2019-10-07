@@ -45,7 +45,7 @@ class Editor extends React.Component {
     data.dispatch('core/nux').disableTips();
 
     // Initialize the editor
-    window._wpLoadGutenbergEditor = new Promise(resolve => {
+    window._wpLoadBlockEditor = new Promise(resolve => {
       domReady(() => {
         resolve(editPost.initializeEditor('editor', postType, 1, settings, {}));
       });

@@ -6,6 +6,7 @@
     "types": [
       "post"
     ],
+    "visibility": { "show_ui": true },
     "hierarchical": true,
     "rest_base": "categories",
     "_links": {
@@ -35,6 +36,7 @@
     "types": [
       "post"
     ],
+    "visibility": { "show_ui": true },
     "hierarchical": false,
     "rest_base": "tags",
     "_links": {
