@@ -29,7 +29,7 @@ class Editor extends React.Component {
       disableCustomColors: false,
       disablePostFormats: false,
       titlePlaceholder: 'Add title',
-      bodyPlaceholder: 'Insert your custom block',
+      bodyPlaceholder: 'Start writing or type / to choose a block',
       isRTL: false,
       autosaveInterval: 3,
       postLock: {
