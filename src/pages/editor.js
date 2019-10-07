@@ -27,6 +27,7 @@ class Editor extends React.Component {
       availableTemplates: [],
       allowedBlockTypes: true,
       disableCustomColors: false,
+      disableCustomFontSizes: false,
       disablePostFormats: false,
       titlePlaceholder: 'Add title',
       bodyPlaceholder: 'Insert your custom block',
