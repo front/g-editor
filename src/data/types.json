@@ -10,16 +10,22 @@
       "custom-fields": true,
       "editor": true,
       "excerpt": false,
-      "page-attributes": false,
       "revisions": false,
       "thumbnail": false,
-      "title": true
+      "title": true,
+      "trackbacks": true,
+      "post-formats": true,
+      "amp": true,
+      "publicize": true,
+      "geo-location": true,
+      "jetpack-sharing-buttons": true,
+      "jetpack-post-likes": true
     },
     "taxonomies": [
       "category",
       "post_tag"
     ],
-    "viewable": "true",
+    "viewable": true,
     "rest_base": "posts",
     "_links": {
       "collection": [
@@ -59,7 +65,7 @@
       "title": false
     },
     "taxonomies": [],
-    "viewable": "true",
+    "viewable": true,
     "rest_base": "pages",
     "_links": {
       "collection": [
