@@ -110,6 +110,7 @@ export function deletePage () {
   // is finished.
   setTimeout(function () {
     localStorage.removeItem('g-editor-page');
+    sessionStorage.removeItem('wp-autosave-block-editor-post-1');
     window.location.reload();
   }, 500);
 }

@@ -64,6 +64,7 @@ class Editor extends React.Component {
     ev.preventDefault();
 
     localStorage.removeItem('g-editor-page');
+    sessionStorage.removeItem('wp-autosave-block-editor-post-1');
     window.location.reload();
   };
 
