@@ -70,11 +70,10 @@ export function getPage (type = 'page') {
   return JSON.parse(localStorage.getItem('g-editor-page')) || pages[type];
 }
 
-
 export function savePage (data, type = 'page') {
   const item = {
     ...getPage(type),
-    id: data.id,
+    id: data.id || 1, // to prevent when id isn't passed as data (ex: autosaves)
   };
 
   if(data.title) {
@@ -89,12 +88,28 @@ export function savePage (data, type = 'page') {
       // rendered: data.content.replace(/(<!--.*?-->)/g, ''),
     };
   }
+  if(data.excerpt) {
+    item.excerpt = {
+      raw: data.excerpt,
+      rendered: data.excerpt,
+    };
+  }
+
   localStorage.setItem('g-editor-page', JSON.stringify(item));
 }
-
 
 export function changeType (type) {
   const item = getPage(type);
   item.type = type;
+
   localStorage.setItem('g-editor-page', JSON.stringify(item));
+}
+
+export function deletePage () {
+  // Workaround to wait until the POST request (that is called after DELETE)
+  // is finished.
+  setTimeout(function () {
+    localStorage.removeItem('g-editor-page');
+    window.location.reload();
+  }, 500);
 }

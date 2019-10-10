@@ -57,10 +57,15 @@ function parseQS (qs) {
 
 
 const apiFetch = options => {
-  const { method = 'GET', path, data, body, url } = options;
+  let { method = 'GET' } = options;
+  const { path, data, body, url, headers } = options;
   const [ pathname, _qs ] = path.split('?');
   const query = parseQS(_qs);
   const payload = data || body;
+
+  if(headers && headers['X-HTTP-Method-Override']) {
+    method = headers['X-HTTP-Method-Override'];
+  }
 
   // console.log(method, pathname);
 

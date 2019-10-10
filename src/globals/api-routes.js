@@ -1,5 +1,5 @@
 
-import { getPage, savePage } from './fake-data.js';
+import { getPage, savePage, deletePage } from './fake-data.js';
 import { mediaList, createMedia } from './fake-media.js';
 
 import users from '../data/users';
@@ -30,6 +30,14 @@ export default [
     },
   },
   {
+    path: '/wp/v2/pages/{id}',
+    method: 'DELETE',
+    handler () {
+      deletePage();
+      return {};
+    },
+  },
+  {
     path: [
       '/wp/v2/pages/{id}',
       '/wp/v2/pages/{id}/autosaves',
@@ -45,6 +53,14 @@ export default [
     method: '*',
     handler () {
       return [ getPage('post') ];
+    },
+  },
+  {
+    path: '/wp/v2/posts/{id}',
+    method: 'DELETE',
+    handler () {
+      deletePage();
+      return {};
     },
   },
   {
