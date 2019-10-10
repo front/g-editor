@@ -2,6 +2,7 @@
   "post": {
     "description": "",
     "hierarchical": false,
+    "viewable": true,
     "name": "Posts",
     "slug": "post",
     "supports": {
@@ -13,13 +14,13 @@
       "page-attributes": false,
       "revisions": false,
       "thumbnail": false,
-      "title": true
+      "title": true,
+      "post-formats": true
     },
     "taxonomies": [
       "category",
       "post_tag"
     ],
-    "viewable": "true",
     "rest_base": "posts",
     "_links": {
       "collection": [
@@ -44,6 +45,7 @@
   "page": {
     "description": "",
     "hierarchical": true,
+    "viewable": true,
     "name": "Pages",
     "slug": "page",
     "supports": {
@@ -52,14 +54,13 @@
       "custom-fields": false,
       "discussion": false,
       "editor": true,
-      "excerpt": false,
+      "excerpt": true,
       "page-attributes": false,
       "revisions": false,
       "thumbnail": false,
       "title": false
     },
     "taxonomies": [],
-    "viewable": "true",
     "rest_base": "pages",
     "_links": {
       "collection": [
@@ -84,8 +85,14 @@
   "attachment": {
     "description": "",
     "hierarchical": false,
+    "viewable": true,
     "name": "Media",
     "slug": "attachment",
+    "supports": {
+      "title": true,
+      "author": true,
+      "comments": true
+    },
     "taxonomies": [],
     "rest_base": "media",
     "_links": {
@@ -111,8 +118,13 @@
   "wp_block": {
     "description": "",
     "hierarchical": false,
+    "viewable": false,
     "name": "Blocks",
     "slug": "wp_block",
+    "supports": {
+      "title": true,
+      "editor": true
+    },
     "taxonomies": [],
     "rest_base": "blocks",
     "_links": {
@@ -133,6 +145,7 @@
           "templated": true
         }
       ]
-    }
+    },
+    "headers": []
   }
 }
