@@ -27,14 +27,22 @@ class Editor extends React.Component {
       availableTemplates: [],
       allowedBlockTypes: true,
       disableCustomColors: false,
+      disableCustomFontSizes: false,
       disablePostFormats: false,
       titlePlaceholder: 'Add title',
       bodyPlaceholder: 'Insert your custom block',
       isRTL: false,
       autosaveInterval: 3,
+      style: [],
+      imageSizes: [],
+      richEditingEnabled: true,
       postLock: {
         isLocked: false,
       },
+      postLockUtils: {
+        nonce: '123456789',
+      },
+      enableCustomFields: true,
       mediaLibrary: true,
     };
 
