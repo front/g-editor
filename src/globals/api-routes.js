@@ -185,7 +185,7 @@ export default [
   {
     path: '/wp/v2/categories',
     method: 'POST',
-    handler({ payload: { name } }) {
+    handler ({ payload: { name } }) {
       return {
         id: window.lodash.random(1, 100000000),
         name,
@@ -197,14 +197,14 @@ export default [
   {
     path: '/wp/v2/tags',
     method: 'GET',
-    handler() {
+    handler () {
       return new window.Response(JSON.stringify(tags));
     },
   },
   {
     path: '/wp/v2/tags',
     method: 'POST',
-    handler({ payload: { name } }) {
+    handler ({ payload: { name } }) {
       return {
         id: window.lodash.random(1, 100000000),
         name,
