@@ -54,13 +54,16 @@ export const pages = {
     theme_style: true,
     type: 'post',
     link: `${window.location.origin}/preview`,
-    categories: [ ],
+    categories: [1],
+    tags: [1, 2],
     featured_media: 0,
     permalink_template: `${window.location.origin}/preview`,
     preview_link: `${window.location.origin}/preview`,
     _links: {
       'wp:action-assign-categories': [],
       'wp:action-create-categories': [],
+      'wp:action-create-tags': [],
+      'wp:action-assign-tags': [],
     },
   },
 };
