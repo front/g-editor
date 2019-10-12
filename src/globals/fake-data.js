@@ -23,7 +23,7 @@ export const pages = {
     theme_style: true,
     type: 'page',
     link: `${window.location.origin}/preview`,
-    categories: [ ],
+    categories: [],
     featured_media: 0,
     permalink_template: `${window.location.origin}/preview`,
     preview_link: `${window.location.origin}/preview`,
