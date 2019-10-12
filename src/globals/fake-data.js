@@ -63,10 +63,10 @@ export const pages = {
     permalink_template: `${window.location.origin}/preview`,
     preview_link: `${window.location.origin}/preview`,
     _links: {
-      'wp:action-assign-categories': [],
-      'wp:action-create-categories': [],
-      'wp:action-create-tags': [],
-      'wp:action-assign-tags': [],
+      'wp:action-create-categories': [{}],
+      'wp:action-assign-categories': [{}],
+      'wp:action-create-tags': [{}],
+      'wp:action-assign-tags': [{}],
     },
   },
 };
