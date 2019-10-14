@@ -34,6 +34,8 @@ It now includes the source `Gutenberg` packages directly.
 
 [v6.6.0](https://github.com/WordPress/gutenberg/releases/tag/v6.6.0)
 
+(check original packages order [here](https://github.com/WordPress/WordPress/blob/master/wp-includes/script-loader.php))
+
 
 ## Assets
 
