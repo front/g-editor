@@ -17,10 +17,16 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const paths = require('./paths');
 const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+const fs = require('fs');
 
 // Block Script and Style
 const blockVars = require('./block-vars')();
 
+// Read from local files
+const gutenberg = {
+  gutenbergScripts: fs.readFileSync("./g-scripts.txt"),
+  gutenbergStyle: fs.readFileSync("./g-styles.txt")
+}
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -417,6 +423,7 @@ module.exports = {
       inject: true,
       template: paths.appHtml,
       ...blockVars,
+      ...gutenberg,
       minify: {
         removeComments: true,
         collapseWhitespace: true,

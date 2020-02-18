@@ -13,10 +13,16 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+const fs = require('fs');
 
 // Block Script and Style
 const blockVars = require('./block-vars')();
 
+// Read from local files
+const gutenberg = {
+  gutenbergScripts: fs.readFileSync("./g-scripts.txt"),
+  gutenbergStyle: fs.readFileSync("./g-styles.txt")
+}
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -342,6 +348,7 @@ module.exports = {
       inject: true,
       template: paths.appHtml,
       ...blockVars,
+      ...gutenberg,
     }),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
