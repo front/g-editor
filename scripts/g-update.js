@@ -10,7 +10,7 @@ const scripts = packages.scripts.reduce((html, script) => {
     return html;
   }
 
-    return html + '<script id="' + script.name +  '" src="' + script.path.replace('./public', '') + '"></script>';
+  return html + '<script id="' + script.name +  '" src="' + script.path.replace('./public', '') + '"></script>';
 }, '');
 
 const styles = packages.styles.reduce((html, style) => {

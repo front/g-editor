@@ -1,4 +1,4 @@
-module.exports = function AssetsQueue() {
+module.exports = function AssetsQueue () {
   // Assets list and their dependencies
   // ex: { 'a': ['b', 'c', 'd'] , 'b': ['c'], 'c': [], 'd': ['b', 'c'] }
   const assetsList = [];
@@ -12,7 +12,7 @@ module.exports = function AssetsQueue() {
   const sortedList = [];
 
   // Sorts assest list according their dependencies
-  const sortList = (list) => {
+  const sortList = list => {
     list.forEach(item => {
       if (assetsList[item] && assetsList[item].length) {
         sortList(assetsList[item]);
@@ -22,7 +22,7 @@ module.exports = function AssetsQueue() {
         sortedList.push(item);
       }
     });
-  }
+  };
 
   return {
     enqueue: (name, path, deps) => {
@@ -35,10 +35,10 @@ module.exports = function AssetsQueue() {
       // Sorting assets
       sortList(Object.keys(assetsList));
 
-      return sortedList.map(asset => ( {
+      return sortedList.map(asset => ({
         name: asset,
-        path: pathsList[asset]
-      } ) );
-    }
-  }
-}
+        path: pathsList[asset],
+      }));
+    },
+  };
+};
