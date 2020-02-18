@@ -67,6 +67,10 @@ module.exports = function getGutenbergAssets () {
     vendorFolder + '/no-conflict.js',
     ['lodash']);
 
+  depsScripts.enqueue('g-data',
+    vendorFolder + '/g-data.js',
+    ['wp-data']);
+
   // Enqueue wp-packages js
   for (const script in gutenbergScripts) {
     depsScripts.enqueue(script,
