@@ -206,14 +206,24 @@
   }
 
   // Hide links to php pages
-  a[href^="edit.php"],
-  a[href^="post.php"],
-  a[href^="options-permalink.php"] {
-    display: none;
-  }
+  // a[href^="edit.php"],
+  // a[href^="post.php"],
+  // a[href^="options-permalink.php"] {
+  //   display: none;
+  // }
 
   // Hide publish button
-  .editor-post-publish-button {
-    display: none;
+  // .editor-post-publish-button {
+  //   display: none;
+  // }
+
+  .block-editor-editor-skeleton {
+    top: 0;
+  }
+
+  @media (min-width: 782px) {
+    .block-editor-editor-skeleton {
+      left: 0;
+    }
   }
 }
