@@ -27,6 +27,7 @@ class MediaContainer extends Component {
       link: img.link,
       mime: img.mime_type,
       sizes: img.media_details.sizes,
+      media_details: img.media_details,
       subtype: img.mime_type.split('/')[ 1 ],
       type: img.mime_type.split('/')[ 0 ],
       url: img.source_url,
