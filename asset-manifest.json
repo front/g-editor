@@ -1,14 +1,14 @@
 {
-  "main.css": "/static/css/main.b271f54a.chunk.css",
-  "main.js": "/static/js/main.a0da887d.chunk.js",
-  "main.js.map": "/static/js/main.a0da887d.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.36b9aa20.js",
-  "runtime~main.js.map": "/static/js/runtime~main.36b9aa20.js.map",
-  "static/js/2.7bfdc41a.chunk.js": "/static/js/2.7bfdc41a.chunk.js",
-  "static/js/2.7bfdc41a.chunk.js.map": "/static/js/2.7bfdc41a.chunk.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.9c5609cc261f49ced57a8b5e11efc8fe.js": "/precache-manifest.9c5609cc261f49ced57a8b5e11efc8fe.js",
-  "service-worker.js": "/service-worker.js",
-  "static/css/main.b271f54a.chunk.css.map": "/static/css/main.b271f54a.chunk.css.map",
-  "static/js/2.7bfdc41a.chunk.js.LICENSE.txt": "/static/js/2.7bfdc41a.chunk.js.LICENSE.txt"
+  "main.css": "/g-editor/static/css/main.b271f54a.chunk.css",
+  "main.js": "/g-editor/static/js/main.a0da887d.chunk.js",
+  "main.js.map": "/g-editor/static/js/main.a0da887d.chunk.js.map",
+  "runtime~main.js": "/g-editor/static/js/runtime~main.937f4564.js",
+  "runtime~main.js.map": "/g-editor/static/js/runtime~main.937f4564.js.map",
+  "static/js/2.7bfdc41a.chunk.js": "/g-editor/static/js/2.7bfdc41a.chunk.js",
+  "static/js/2.7bfdc41a.chunk.js.map": "/g-editor/static/js/2.7bfdc41a.chunk.js.map",
+  "index.html": "/g-editor/index.html",
+  "precache-manifest.9bd7a55044e66379eaf6c6ae5c8ee65e.js": "/g-editor/precache-manifest.9bd7a55044e66379eaf6c6ae5c8ee65e.js",
+  "service-worker.js": "/g-editor/service-worker.js",
+  "static/css/main.b271f54a.chunk.css.map": "/g-editor/static/css/main.b271f54a.chunk.css.map",
+  "static/js/2.7bfdc41a.chunk.js.LICENSE.txt": "/g-editor/static/js/2.7bfdc41a.chunk.js.LICENSE.txt"
 }
