@@ -11,6 +11,10 @@
  * Often re-used variables
  */
 /**
+ * Grid System.
+ * https://make.wordpress.org/design/2019/10/31/proposal-a-consistent-spacing-system-for-wordpress/
+ */
+/**
  * Breakpoint mixins
  */
 /**
@@ -88,7 +92,12 @@
 
 .wp-block-buttons .wp-block-button {
   display: inline-block;
-  margin: 4px; }
+  margin-right: 8px;
+  margin-bottom: 8px; }
+
+.wp-block-buttons.alignright .wp-block-button {
+  margin-right: none;
+  margin-left: 8px; }
 
 .wp-block-buttons.aligncenter {
   text-align: center; }
@@ -142,9 +151,9 @@
   @media (max-width: 599px) {
     .wp-block-column {
       flex-basis: 100% !important; } }
-  @media (min-width: 600px) {
+  @media (min-width: 600px) and (max-width: 781px) {
     .wp-block-column {
-      flex-basis: calc(50% - 16px);
+      flex-basis: calc(50% - 16px) !important;
       flex-grow: 0; }
       .wp-block-column:nth-child(even) {
         margin-left: 32px; } }
@@ -181,6 +190,9 @@
 
 .wp-block-column.is-vertically-aligned-bottom {
   align-self: flex-end; }
+
+.wp-block-column.is-vertically-aligned-top, .wp-block-column.is-vertically-aligned-center, .wp-block-column.is-vertically-aligned-bottom {
+  width: 100%; }
 
 .wp-block-cover-image,
 .wp-block-cover {
@@ -336,8 +348,7 @@
   width: 100%;
   height: 100%;
   z-index: 0;
-  -o-object-fit: cover;
-     object-fit: cover; }
+  object-fit: cover; }
 
 section.wp-block-cover-image h2,
 .wp-block-cover-image-text,
@@ -566,8 +577,7 @@ section.wp-block-cover-image > h2,
       .blocks-gallery-grid.is-cropped .blocks-gallery-item img {
         height: 100%;
         flex: 1;
-        -o-object-fit: cover;
-           object-fit: cover; } }
+        object-fit: cover; } }
   .wp-block-gallery .blocks-gallery-image,
   .wp-block-gallery .blocks-gallery-item,
   .blocks-gallery-grid .blocks-gallery-image,
@@ -1087,7 +1097,6 @@ section.wp-block-cover-image > h2,
   .wp-block-navigation .wp-block-navigation-link .wp-block-navigation-link__content {
     display: flex;
     align-items: center;
-    width: -webkit-max-content;
     width: max-content;
     padding: 6px 16px; }
   .wp-block-navigation .wp-block-navigation-link .wp-block-navigation-link:first-child:not(:only-child) .wp-block-navigation-link__content {
@@ -1693,8 +1702,7 @@ p.wp-block-subhead {
     max-width: 100%; }
   @supports ((position: -webkit-sticky) or (position: sticky)) {
     .wp-block-video [poster] {
-      -o-object-fit: cover;
-         object-fit: cover; } }
+      object-fit: cover; } }
   .wp-block-video.aligncenter {
     text-align: center; }
   .wp-block-video figcaption {

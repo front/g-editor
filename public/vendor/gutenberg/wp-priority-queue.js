@@ -82,51 +82,23 @@ this["wp"] = this["wp"] || {}; this["wp"]["priorityQueue"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 447);
+/******/ 	return __webpack_require__(__webpack_require__.s = 451);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 32:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _typeof; });
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-/***/ }),
-
-/***/ 447:
+/***/ 451:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
-var esm_typeof = __webpack_require__(32);
-
 // CONCATENATED MODULE: ./node_modules/@wordpress/priority-queue/build-module/request-idle-callback.js
-
-
 /**
  * @return {typeof window.requestIdleCallback|typeof window.requestAnimationFrame|((callback:(timestamp:number)=>void)=>void)}
  */
 function createRequestIdleCallback() {
-  if (Object(esm_typeof["a" /* default */])('window') === undefined) {
+  if (typeof window === 'undefined') {
     return function (callback) {
       setTimeout(function () {
         return callback(Date.now());

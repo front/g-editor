@@ -5,7 +5,7 @@ read -p 'Wordpress tag (enter): ' tag_name
 cd tmp
 
 # Get wordpress
-[[ -d WordPress ]] ||git clone git@github.com:WordPress/WordPress.git
+[[ -d WordPress ]] ||git clone https://github.com/WordPress/WordPress.git
 cd WordPress
 
 git fetch

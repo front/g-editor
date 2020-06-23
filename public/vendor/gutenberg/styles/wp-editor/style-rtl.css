@@ -12,6 +12,10 @@
  * Often re-used variables
  */
 /**
+ * Grid System.
+ * https://make.wordpress.org/design/2019/10/31/proposal-a-consistent-spacing-system-for-wordpress/
+ */
+/**
  * Breakpoint mixins
  */
 /**
@@ -407,7 +411,6 @@
   position: absolute;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   pointer-events: none;
