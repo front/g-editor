@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 import React from 'react';
 import types from '../data/types';
 import { changeType } from '../globals/fake-data';
@@ -6,9 +7,8 @@ import './editor.scss';
 
 const { data, editPost, domReady } = window.wp;
 
-
 class Editor extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     let type = window.location.pathname.replace(/\//g, '');
@@ -19,7 +19,7 @@ class Editor extends React.Component {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const { postType } = this.state;
 
     const settings = {
@@ -77,29 +77,33 @@ class Editor extends React.Component {
     window.location.replace(type);
   };
 
-  render () {
+  render() {
     const { postType } = this.state;
 
     return (
-      <React.Fragment>
+      <>
         <div className="editor-nav">
-          {
-            ['post', 'page'].map(type => {
-              return (
-                <button
-                  key={ type }
-                  className={ `components-button ${type === postType ? 'is-primary' : ''}` }
-                  onClick={ ev => this.changePostType(ev, types[type].rest_base) }
-                >{ types[type].name }</button>
-              );
-            })
-          }
+          {['post', 'page'].map(type => (
+            // eslint-disable-next-line react/button-has-type
+            <button
+              key={ type }
+              className={ `components-button ${ type === postType ? 'is-primary' : ''}` }
+              onClick={ ev => this.changePostType(ev, types[type].rest_base) }
+            >
+              { types[type].name }
+            </button>
+          ))}
 
-          <button type="button" className="components-button is-tertiary"
-            onClick={ this.resetLocalStorage }>Clear page and reload</button>
+          <button
+            type="button"
+            className="components-button is-tertiary"
+            onClick={ this.resetLocalStorage }
+          >
+            Clear page and reload
+          </button>
         </div>
-        <div id="editor" className="gutenberg__editor"></div>
-      </React.Fragment>
+        <div id="editor" className="gutenberg__editor" />
+      </>
     );
   }
 }

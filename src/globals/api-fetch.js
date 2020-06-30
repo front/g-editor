@@ -1,10 +1,15 @@
-
+/* eslint-disable no-plusplus */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-continue */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 import routes from './api-routes';
 
 
 function matchRoute (pattern, pathname) {
   const res = {};
-  const r = pattern.split('/'), p = pathname.split('/');
+  const r = pattern.split('/');
+  const p = pathname.split('/');
   const l = Math.max(r.length, p.length);
 
   let i = 0;
@@ -49,6 +54,7 @@ function matchMethod (source, target) {
 
 function parseQS (qs) {
   return qs.split('&').reduce((a, i, p) => {
+    // eslint-disable-next-line no-param-reassign
     p = i.split('=');
     a[decodeURIComponent(p[0])] = decodeURIComponent(p[1] || '');
     return a;

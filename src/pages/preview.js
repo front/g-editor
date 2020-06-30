@@ -13,6 +13,7 @@ class Preview extends React.Component {
     };
   }
 
+  // eslint-disable-next-line react/no-deprecated
   componentWillMount () {
     // remove block editor style from page
     const editorStyle = document.querySelector('style[id="block-editor-style"]');
@@ -55,6 +56,7 @@ class Preview extends React.Component {
       container.innerHTML = html;
 
       const scripts = container.getElementsByTagName('script');
+      // eslint-disable-next-line no-restricted-syntax
       for(const s of scripts) {
         const script = document.createElement('script');
         script.type = 'text/javascript';
@@ -78,7 +80,8 @@ class Preview extends React.Component {
   render () {
     const { rendered } = this.state;
     return rendered ?
-      <div dangerouslySetInnerHTML={{ __html: rendered }} /> :
+      // eslint-disable-next-line react/no-danger
+      <div dangerouslySetInnerHTML={ { __html: rendered } } /> :
       <center><em>Add your custom block in the editor</em></center>;
   }
 }

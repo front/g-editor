@@ -104,7 +104,7 @@ export default [
     method: 'POST',
     async handler ({ payload }) {
       const file = payload.get('file');
-      return file ? await createMedia(file) : {};
+      return file ? createMedia(file) : {};
     },
   },
   {

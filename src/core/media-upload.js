@@ -1,5 +1,4 @@
-
-import { Component, Fragment } from 'react';
+import { Component } from 'react';
 import './media-library.scss';
 
 const { wp, lodash } = window;
@@ -10,14 +9,13 @@ const { Popover } = wp.components;
 const { withSelect } = wp.data;
 const { addFilter } = wp.hooks;
 
-
 class MediaContainer extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.onImageClick = this.onImageClick.bind(this);
   }
 
-  onImageClick (img) {
+  onImageClick(img) {
     const { onSelect, closePopover, gallery = false, multiple = false } = this.props;
 
     const imgObject = {
@@ -27,51 +25,56 @@ class MediaContainer extends Component {
       link: img.link,
       mime: img.mime_type,
       sizes: img.media_details.sizes,
-      subtype: img.mime_type.split('/')[ 1 ],
-      type: img.mime_type.split('/')[ 0 ],
+      media_details: img.media_details,
+      subtype: img.mime_type.split('/')[1],
+      type: img.mime_type.split('/')[0],
       url: img.source_url,
       data: img.data,
     };
 
     if (gallery || multiple) {
       onSelect([imgObject]);
-    }
-    else {
+    } else {
       onSelect(imgObject);
     }
     closePopover();
   }
 
-  render () {
+  render() {
     const { media, allowedTypes = [] } = this.props;
-    const items = media && media.filter(item => ! allowedTypes.length || allowedTypes.includes(item.media_type));
+    const items =
+      media && media.filter(item => !allowedTypes.length || allowedTypes.includes(item.media_type));
     return (
       <div className="media-library__popover__content">
-        { items && items.map(item => {
-          const sourceUrl = get(item, 'media_details.sizes.thumbnail.source_url') ||
-            (item.media_type === 'image' && item.source_url);
-          const buttonStyle = sourceUrl ? { backgroundImage: `url(${sourceUrl})` } : {};
+        {items &&
+          items.map(item => {
+            const sourceUrl =
+              get(item, 'media_details.sizes.thumbnail.source_url') ||
+              (item.media_type === 'image' && item.source_url);
+            const buttonStyle = sourceUrl ? { backgroundImage: `url(${sourceUrl})` } : {};
 
-          return <button
-            key={ item.id }
-            className="media-library-thumbnail"
-            style={ buttonStyle }
-            onClick={ () => this.onImageClick(item) }
-          ></button>;
-        }) }
+            return (
+              // eslint-disable-next-line jsx-a11y/control-has-associated-label
+              <button
+                key={ item.id }
+                className="media-library-thumbnail"
+                style={ buttonStyle }
+                onClick={ () => this.onImageClick(item) }
+                type="button"
+              />
+            );
+          })}
       </div>
     );
   }
 }
 
-
 const MediaLibrary = withSelect(select => ({
   media: select('core').getMediaItems(),
 }))(MediaContainer);
 
-
 class MediaUpload extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = { isVisible: false };
 
@@ -79,15 +82,15 @@ class MediaUpload extends Component {
     this.closePopover = this.closePopover.bind(this);
   }
 
-  openPopover () {
+  openPopover() {
     this.setState({ isVisible: true });
   }
 
-  closePopover () {
+  closePopover() {
     this.setState({ isVisible: false });
   }
 
-  render () {
+  render() {
     if (!this.props.mediaLibrary) {
       console.log('Media Library is deactivated');
       return false;
@@ -95,31 +98,29 @@ class MediaUpload extends Component {
 
     const { isVisible } = this.state;
 
-    return <Fragment>
-      { isVisible &&
-      <Popover
-        className="media-library__popover"
-        onClose={ this.closePopover }
-        onClick={ event => event.stopPropagation() }
-        position="middle left"
-        headerTitle={ __('Media Library') }
-      >
-        <MediaLibrary
-          { ...this.props }
-          closePopover={ this.closePopover }
-        />
-      </Popover>
-      }
-      { this.props.render({ open: this.openPopover }) }
-    </Fragment>;
+    return (
+      <>
+        {isVisible && (
+          <Popover
+            className="media-library__popover"
+            onClose={ this.closePopover }
+            onClick={ event => event.stopPropagation() }
+            position="middle left"
+            headerTitle={ __('Media Library') }
+          >
+            <MediaLibrary { ...this.props } closePopover={ this.closePopover } />
+          </Popover>
+        )}
+        {this.props.render({ open: this.openPopover })}
+      </>
+    );
   }
 }
 
-
-const replaceMediaUpload = () => withSelect(select => ({
-  mediaLibrary: select('core/editor').getEditorSettings().mediaLibrary,
-}))(MediaUpload);
-
+const replaceMediaUpload = () =>
+  withSelect(select => ({
+    mediaLibrary: select('core/editor').getEditorSettings().mediaLibrary,
+  }))(MediaUpload);
 
 addFilter(
   'editor.MediaUpload',
