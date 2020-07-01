@@ -56,11 +56,12 @@
 <script id="wp-plugins" src="/vendor/gutenberg/wp-plugins.min.js"></script>
 <script id="wp-block-directory" src="/vendor/gutenberg/wp-block-directory.min.js"></script>
 
+<script id="wp-data-controls" src="/vendor/gutenberg/wp-data-controls.min.js"></script>
 <script id="wp-core-data" src="/vendor/gutenberg/wp-core-data.min.js"></script>
 <script id="wp-date" src="/vendor/gutenberg/wp-date.min.js"></script>
 <script id="wp-server-side-render" src="/vendor/gutenberg/wp-server-side-render.min.js"></script>
 <script id="wp-block-library" src="/vendor/gutenberg/wp-block-library.min.js"></script>
-<script id="wp-data-controls" src="/vendor/gutenberg/wp-data-controls.min.js"></script>
+
 <script id="wp-media-utils" src="/vendor/gutenberg/wp-media-utils.min.js"></script>
 <script id="wp-notices" src="/vendor/gutenberg/wp-notices.min.js"></script>
 <script id="wp-editor" src="/vendor/gutenberg/wp-editor.min.js"></script>
