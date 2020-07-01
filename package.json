@@ -1,6 +1,6 @@
 {
   "name": "da-g-editor",
-  "version": "1.5.1",
+  "version": "1.5.5",
   "description": "A minimalist version of Gutenberg's editor. Ideal for testing custom blocks.",
   "author": "Ryan Holder",
   "private": false,
@@ -12,7 +12,9 @@
     "scripts/",
     "src/",
     ".eslintignore",
-    ".eslintrc"
+    ".eslintrc",
+    "g-scripts.txt",
+    "g-styles.txt"
   ],
   "dependencies": {
     "@svgr/webpack": "2.4.1",

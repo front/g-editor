@@ -121,6 +121,8 @@
 		"react/no-children-prop": "off",
 		"react/no-find-dom-node": "warn",
 		"react/no-unescaped-entities": "off",
-		"react/prop-types": "off"
+		"react/prop-types": "off",
+		"import/no-unresolved": 0,
+		"react/jsx-fragments":"off"
 	}
 }

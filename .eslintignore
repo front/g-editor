@@ -5,3 +5,4 @@ node_modules/*
 public/vendor/*
 scripts/*
 src/serviceWorker.js
+src/*
