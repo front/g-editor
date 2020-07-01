@@ -1,11 +1,28 @@
 {
-  "block-editor": [ "wp-components", "wp-editor-font" ],
+  "block-editor": [
+    "wp-components",
+    "wp-editor-font"
+  ],
   "block-library": [],
   "components": [],
-  "edit-post": [ "wp-components", "wp-block-editor", "wp-editor",
-                 "wp-edit-blocks", "wp-block-library", "wp-nux" ],
-  "editor": [ "wp-components", "wp-block-editor", "wp-nux" ],
+  "edit-post": [
+    "wp-components",
+    "wp-block-editor",
+    "wp-editor",
+    "wp-edit-blocks",
+    "wp-block-library",
+    "wp-nux"
+  ],
+  "editor": [
+    "wp-components",
+    "wp-block-editor",
+    "wp-nux"
+  ],
   "format-library": [],
-  "list-reusable-blocks": [ "wp-components" ],
-  "nux": [ "wp-components" ]
+  "list-reusable-blocks": [
+    "wp-components"
+  ],
+  "nux": [
+    "wp-components"
+  ]
 }

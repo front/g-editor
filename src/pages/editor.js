@@ -86,18 +86,18 @@ class Editor extends React.Component {
           {['post', 'page'].map(type => (
             // eslint-disable-next-line react/button-has-type
             <button
-              key={ type }
-              className={ `components-button ${ type === postType ? 'is-primary' : ''}` }
-              onClick={ ev => this.changePostType(ev, types[type].rest_base) }
+              key={type}
+              className={`components-button ${type === postType ? 'is-primary' : ''}`}
+              onClick={ev => this.changePostType(ev, types[type].rest_base)}
             >
-              { types[type].name }
+              {types[type].name}
             </button>
           ))}
 
           <button
             type="button"
             className="components-button is-tertiary"
-            onClick={ this.resetLocalStorage }
+            onClick={this.resetLocalStorage}
           >
             Clear page and reload
           </button>

@@ -1,7 +1,9 @@
-<link rel="stylesheet" id="wp-edit-post" href="/vendor/gutenberg/styles/wp-edit-post/style.min.css"></link>
+
+
 <link rel="stylesheet" id="wp-block-editor" href="/vendor/gutenberg/styles/wp-block-editor/style.min.css"></link>
 <link rel="stylesheet" id="wp-block-library-theme" href="/vendor/gutenberg/styles/wp-block-library/theme.min.css"></link>
 <link rel="stylesheet" id="wp-components" href="/vendor/gutenberg/styles/wp-components/style.min.css"></link>
+
 
 <link rel="stylesheet" id="wp-format-library" href="/vendor/gutenberg/styles/wp-format-library/style.min.css"></link>
 <link rel="stylesheet" id="wp-nux" href="/vendor/gutenberg/styles/wp-nux/style.min.css"></link>
@@ -11,8 +13,11 @@
 
 <link rel="stylesheet" id="wp-list-reusable-blocks" href="/vendor/gutenberg/styles/wp-list-reusable-blocks/style.min.css"></link>
 <link rel="stylesheet" id="edit-navigation-css" href="/vendor/gutenberg/styles/edit-navigation/style.css"></link>
+
 <link rel="stylesheet" id="edit-site-css" href="/vendor/gutenberg/styles/edit-site/style.css"></link>
 <link rel="stylesheet" id="edit-widgets-css" href="/vendor/gutenberg/styles/edit-widgets/style.css"></link>
+
+<link rel="stylesheet" id="wp-edit-post" href="/vendor/gutenberg/styles/wp-edit-post/style.min.css"></link>
 <link rel="stylesheet" id="wp-block-directory-css" href="/vendor/gutenberg/styles/wp-block-directory/style.css"></link>
 
 
