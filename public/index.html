@@ -20921,7 +20921,10 @@
       ><%= htmlWebpackPlugin.options.blockViewScript %></code
     >
   </body>
-  <script>
-    <%= htmlWebpackPlugin.options.blockScript %>
-  </script>
+  <style id="block-style" type="text/css">
+    <%=htmlWebpackPlugin.options.blockStyle %>
+  </style>
+  <style id="block-editor-style" type="text/css">
+    <%=htmlWebpackPlugin.options.blockEditorStyle %>
+  </style>
 </html>
