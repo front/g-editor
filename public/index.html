@@ -20896,8 +20896,13 @@
         z-index: 100000;
       }
     </style>
-    <style type="text/css"></style>
-    <title>g-editor</title>
+    <style type="text/css">
+      <%=htmlWebpackPlugin.options.blockStyle %>
+    </style>
+    <style id="block-editor-style" type="text/css">
+      <%=htmlWebpackPlugin.options.blockEditorStyle %>
+    </style>
+    <title>da-g-editor</title>
   </head>
   <body style="margin: 0">
     <!-- Gutenberg Scripts -->
@@ -20921,10 +20926,7 @@
       ><%= htmlWebpackPlugin.options.blockViewScript %></code
     >
   </body>
-  <style id="block-style" type="text/css">
-    <%=htmlWebpackPlugin.options.blockStyle %>
-  </style>
-  <style id="block-editor-style" type="text/css">
-    <%=htmlWebpackPlugin.options.blockEditorStyle %>
-  </style>
+  <script>
+    <%= htmlWebpackPlugin.options.blockScript %>
+  </script>
 </html>

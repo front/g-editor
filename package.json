@@ -1,6 +1,6 @@
 {
   "name": "da-g-editor",
-  "version": "1.5.7",
+  "version": "1.5.10",
   "description": "A minimalist version of Gutenberg's editor. Ideal for testing custom blocks.",
   "author": "Ryan Holder",
   "private": false,
