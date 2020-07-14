@@ -32,9 +32,16 @@ It now includes the source `Gutenberg` packages directly.
 
 ## Current Gutenberg version
 
-[v6.6.0](https://github.com/WordPress/gutenberg/releases/tag/v6.6.0)
+[v8.5.1](https://github.com/WordPress/gutenberg/releases/tag/v8.5.1)
 
-(check original packages order [here](https://github.com/WordPress/WordPress/blob/master/wp-includes/script-loader.php))
+### Better updates
+
+To update Gutenberg packages, run
+```
+npm run g-update
+```
+
+It will pull to your local machine from the WordPress repo the Gutenberg packages assets ready to use. After copy those assets to `public/vendor/gutenberg`, the script will generate `g-scripts.txt` and `g-styles.txt` files with all the depencies the editor needs to run.
 
 
 ## Assets

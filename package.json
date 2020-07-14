@@ -1,6 +1,6 @@
 {
   "name": "@frontkom/g-editor",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "A minimalist version of Gutenberg's editor. Ideal for testing custom blocks.",
   "author": "Frontkom <frontkom@frontkom.no>",
   "private": false,
@@ -12,7 +12,9 @@
     "scripts/",
     "src/",
     ".eslintignore",
-    ".eslintrc"
+    ".eslintrc",
+    "g-scripts.txt",
+    "g-styles.txt"
   ],
   "dependencies": {
     "@babel/core": "7.2.2",
@@ -44,7 +46,7 @@
     "jest-pnp-resolver": "1.0.2",
     "jest-resolve": "23.6.0",
     "mini-css-extract-plugin": "0.4.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "oembed-providers": "^1.0.20170414",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.2.1",
@@ -62,7 +64,7 @@
     "url-loader": "1.1.2",
     "webpack": "4.28.4",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "3.1.14",
+    "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
   },
@@ -76,7 +78,9 @@
     "test": "node scripts/test.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "deploy": "npm run lint && npm publish --access public"
+    "deploy": "npm run lint && npm publish --access public",
+    "preg-update": "./config/gutenberg/update.sh",
+    "g-update": "node scripts/g-update.js"
   },
   "bugs": {
     "url": "https://github.com/front/g-editor/issues"

@@ -1,0 +1,13 @@
+{
+  "react": ["wp-polyfill"],
+  "react-dom": ["react"],
+  "moment": [],
+  "lodash": [],
+  "wp-polyfill-fetch": [],
+  "wp-polyfill-formdata": [],
+  "wp-polyfill-node-contains": [],
+  "wp-polyfill-url": [],
+  "wp-polyfill-dom-rect": [],
+  "wp-polyfill-element-closest": [],
+  "wp-polyfill": []
+}
