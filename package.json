@@ -1,6 +1,6 @@
 {
   "name": "@frontkom/g-editor",
-  "version": "1.6.0",
+  "version": "1.5.0",
   "description": "A minimalist version of Gutenberg's editor. Ideal for testing custom blocks.",
   "author": "Frontkom <frontkom@frontkom.no>",
   "private": false,
@@ -12,7 +12,9 @@
     "scripts/",
     "src/",
     ".eslintignore",
-    ".eslintrc"
+    ".eslintrc",
+    "g-scripts.txt",
+    "g-styles.txt"
   ],
   "dependencies": {
     "@babel/core": "7.2.2",
