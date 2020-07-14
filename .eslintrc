@@ -21,7 +21,8 @@
 		"localStorage": true,
 		"sessionStorage": true,
 		"React": true,
-		"ReactDOM": true
+		"ReactDOM": true,
+		"fetch": true
 	},
 	"plugins": [
 		"react"

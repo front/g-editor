@@ -1,6 +1,7 @@
 
 import { getPage, savePage, deletePage } from './fake-data.js';
 import { mediaList, createMedia } from './fake-media.js';
+import { getEmbed } from './embeds.js';
 
 import users from '../data/users';
 import taxonomies from '../data/taxonomies';
@@ -215,6 +216,15 @@ export default [
     method: '*',
     handler () {
       return [];
+    },
+  },
+
+  // Embed
+  {
+    path: '/oembed/1.0/proxy',
+    method: '*',
+    handler ({ query }) {
+      return getEmbed(query.url);
     },
   },
 ];
