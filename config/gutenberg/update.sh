@@ -1,4 +1,4 @@
-read -p 'Wordpress tag (enter): ' tag_name
+read -p 'WordPress tag (enter): ' tag_name
 
 # Go to tmp folder
 [[ -d tmp ]] || mkdir tmp
@@ -17,27 +17,30 @@ else
   git pull
 fi
 
-# Clean up
-rm -rf ../../public/vendor/gutenberg/
-mkdir ../../public/vendor/gutenberg/
+# Back to root
+cd ../..
 
-# Copy gutenberg packages dependencies lists
-cp wp-includes/assets/dist/* ../../public/vendor/gutenberg/
+# Clean up
+rm -rf public/vendor/gutenberg/
+mkdir public/vendor/gutenberg/
+
+# Generating scripts.json with gutenberg js packages and dependencies
+node scripts/g-scripts.js
 
 # Copy gutenberg packages js
-cp wp-includes/js/dist/* ../../public/vendor/gutenberg/
+cp tmp/WordPress/wp-includes/js/dist/* public/vendor/gutenberg/
 
 # Add packages prefixes (ex: ally.js => wp-a11y.js)
-cd ../../public/vendor/gutenberg/
+cd public/vendor/gutenberg/
 for f in * ; do mv -- "$f" "wp-$f" ; done
 cd -
 
 # Copy vendor (lodash, react, etc)
-cp -Rf wp-includes/js/dist/vendor/ ../../public/vendor/gutenberg/vendor
+cp -Rf tmp/WordPress/wp-includes/js/dist/vendor/ public/vendor/gutenberg/vendor
 
 # Copy packages css
-cp -Rf wp-includes/css/dist/ ../../public/vendor/gutenberg/styles/
+cp -Rf tmp/WordPress/wp-includes/css/dist/ public/vendor/gutenberg/styles/
 
 # Add packages prefixes (ex: wp-block-editor)
-cd ../../public/vendor/gutenberg/styles
+cd public/vendor/gutenberg/styles
 for f in * ; do mv -- "$f" "wp-$f" ; done

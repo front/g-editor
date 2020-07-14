@@ -1,55 +1,13 @@
 'use strict';
 
-const fs = require('fs');
 const AssetsQueue = require('./assets-queue.js');
 
 const vendorScripts = require('./vendor.json');
+const gutenbergScripts = require('./scripts.json');
 const gutenbergStyles = require('./styles.json');
 
 const vendorFolder = './public/vendor';
 const gutenbergFolder = vendorFolder + '/gutenberg';
-
-// Parses a given file and returns the dependencies list
-// TODO
-const getDepsFromFile = file => {
-  let deps = [];
-
-  if (fs.existsSync(file)) {
-    deps = fs.readFileSync(file)
-    .toString()
-    .split('=>')[1]
-    .split('array(')[1]
-    .split('), \'version\'')[0]
-    .replace(/,/g, '')
-    .replace(/\'/g, '')
-    .split(' ');
-  }
-
-  return deps;
-};
-
-// Returns the list of gutenberg packages and their dependencies
-const getScriptsList = dir => {
-  const files = fs.readdirSync(dir);
-  const list = [];
-
-  files.forEach(file => {
-    // Get package name
-    const name = file.split('.')[0];
-
-    if (name.startsWith('wp-') && !list[name]) {
-      const depFile = dir + '/' + name + '.asset.php';
-      const dependencies = getDepsFromFile(depFile);
-
-      list[name] = dependencies;
-    }
-  });
-
-  return list;
-};
-
-// Get wp packages
-const gutenbergScripts = getScriptsList(gutenbergFolder);
 
 module.exports = function getGutenbergAssets () {
   const depsScripts = new AssetsQueue();
@@ -73,9 +31,18 @@ module.exports = function getGutenbergAssets () {
 
   // Enqueue wp-packages js
   for (const script in gutenbergScripts) {
-    depsScripts.enqueue(script,
-      gutenbergFolder + '/' + script + '.min.js',
-      gutenbergScripts[script]);
+    // depsScripts.enqueue(script,
+    //   gutenbergFolder + '/' + script + '.min.js',
+    //   gutenbergScripts[script]);
+
+    const name = 'wp-' + script.replace('.js', '');
+    // console.log(name);
+    // console.log(gutenbergFolder + '/' + name + '.min.js');
+    // console.log(gutenbergScripts[script].dependencies);
+
+    depsScripts.enqueue(name,
+      gutenbergFolder + '/' + name + '.min.js',
+      gutenbergScripts[script].dependencies);
   }
 
   // Enqueue style
@@ -94,6 +61,7 @@ module.exports = function getGutenbergAssets () {
       gutenbergStyles[style]);
   }
 
+  // console.log(depsScripts.getPaths());
   return {
     scripts: depsScripts.getPaths(),
     styles: depsStyles.getPaths(),
