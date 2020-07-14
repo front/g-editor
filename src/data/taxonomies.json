@@ -27,6 +27,9 @@
           "templated": true
         }
       ]
+    },
+    "labels": {
+      "singular_name": "Category"
     }
   },
   "post_tag": {
@@ -57,6 +60,9 @@
           "templated": true
         }
       ]
+    },
+    "labels": {
+      "singular_name": "Tag"
     }
   }
 }

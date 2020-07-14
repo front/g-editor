@@ -40,6 +40,9 @@
           "templated": true
         }
       ]
+    },
+    "labels": {
+      "singular_name": "Post"
     }
   },
   "page": {
@@ -80,6 +83,9 @@
           "templated": true
         }
       ]
+    },
+    "labels": {
+      "singular_name": "Page"
     }
   },
   "attachment": {
@@ -113,6 +119,9 @@
           "templated": true
         }
       ]
+    },
+    "labels": {
+      "singular_name": "Media"
     }
   },
   "wp_block": {
@@ -146,6 +155,9 @@
         }
       ]
     },
-    "headers": []
+    "headers": [],
+    "labels": {
+      "singular_name": "Block"
+    }
   }
 }

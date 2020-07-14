@@ -75,7 +75,9 @@
     "test": "node scripts/test.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "deploy": "npm run lint && npm publish --access public"
+    "deploy": "npm run lint && npm publish --access public",
+    "preg-update": "./config/gutenberg/update.sh",
+    "g-update": "node scripts/g-update.js"
   },
   "bugs": {
     "url": "https://github.com/front/g-editor/issues"
