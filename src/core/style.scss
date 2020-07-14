@@ -55,6 +55,11 @@
       padding-top: 0;
     }
 
+    @media (min-width: 783px) {
+      top: 0;
+      left: 0;
+    }
+
     .edit-post-header,
     .edit-post-sidebar,
     .components-popover {

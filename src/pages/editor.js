@@ -44,6 +44,11 @@ class Editor extends React.Component {
       },
       enableCustomFields: true,
       mediaLibrary: true,
+      __experimentalBlockPatterns: [],
+      __experimentalBlockPatternCategories: [],
+      __experimentalDisableCustomLineHeight: [],
+      __experimentalDisableCustomUnits: [],
+      __experimentalEnableLinkColor: [],
     };
 
     // Disable publish sidebar
