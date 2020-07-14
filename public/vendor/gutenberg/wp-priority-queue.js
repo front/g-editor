@@ -82,51 +82,31 @@ this["wp"] = this["wp"] || {}; this["wp"]["priorityQueue"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 447);
+/******/ 	return __webpack_require__(__webpack_require__.s = 463);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 32:
+/***/ 463:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _typeof; });
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-/***/ }),
-
-/***/ 447:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
-var esm_typeof = __webpack_require__(32);
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "createQueue", function() { return /* binding */ build_module_createQueue; });
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/priority-queue/build-module/request-idle-callback.js
-
+/**
+ * @typedef {( timeOrDeadline: IdleDeadline | number ) => void} Callback
+ */
 
 /**
- * @return {typeof window.requestIdleCallback|typeof window.requestAnimationFrame|((callback:(timestamp:number)=>void)=>void)}
+ * @return {(callback: Callback) => void} RequestIdleCallback
  */
 function createRequestIdleCallback() {
-  if (Object(esm_typeof["a" /* default */])('window') === undefined) {
+  if (typeof window === 'undefined') {
     return function (callback) {
       setTimeout(function () {
         return callback(Date.now());
@@ -139,7 +119,6 @@ function createRequestIdleCallback() {
 /* harmony default export */ var request_idle_callback = (createRequestIdleCallback());
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/priority-queue/build-module/index.js
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createQueue", function() { return build_module_createQueue; });
 /**
  * Internal dependencies
  */
@@ -169,12 +148,19 @@ function createRequestIdleCallback() {
  */
 
 /**
+ * Reset the queue.
+ *
+ * @typedef {()=>void} WPPriorityQueueReset
+ */
+
+/**
  * Priority queue instance.
  *
  * @typedef {Object} WPPriorityQueue
  *
  * @property {WPPriorityQueueAdd}   add   Add callback to queue for context.
  * @property {WPPriorityQueueFlush} flush Flush queue for context.
+ * @property {WPPriorityQueueReset} reset Reset queue.
  */
 
 /**
@@ -197,7 +183,7 @@ function createRequestIdleCallback() {
  * queue.add( ctx2, () => console.log( 'This will be printed second' ) );
  *```
  *
- * @return {WPPriorityQueue} Queue object with `add` and `flush` methods.
+ * @return {WPPriorityQueue} Queue object with `add`, `flush` and `reset` methods.
  */
 
 var build_module_createQueue = function createQueue() {
@@ -207,14 +193,16 @@ var build_module_createQueue = function createQueue() {
 
   var elementsMap = new WeakMap();
   var isRunning = false;
+  /* eslint-disable jsdoc/valid-types */
+
   /**
    * Callback to process as much queue as time permits.
-   *
-   * @type {IdleRequestCallback & FrameRequestCallback}
    *
    * @param {IdleDeadline|number} deadline Idle callback deadline object, or
    *                                       animation frame timestamp.
    */
+
+  /* eslint-enable */
 
   var runWaitingList = function runWaitingList(deadline) {
     var hasTimeRemaining = typeof deadline === 'number' ? function () {
@@ -289,10 +277,23 @@ var build_module_createQueue = function createQueue() {
     callback();
     return true;
   };
+  /**
+   * Reset the queue without running the pending callbacks.
+   *
+   * @type {WPPriorityQueueReset}
+   */
+
+
+  var reset = function reset() {
+    waitingList = [];
+    elementsMap = new WeakMap();
+    isRunning = false;
+  };
 
   return {
     add: add,
-    flush: flush
+    flush: flush,
+    reset: reset
   };
 };
 
