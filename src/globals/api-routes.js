@@ -6,6 +6,7 @@ import { getEmbed } from './embeds.js';
 import users from '../data/users';
 import taxonomies from '../data/taxonomies';
 import categories from '../data/categories';
+import tags from '../data/tags';
 import types from '../data/types';
 import themes from '../data/themes';
 
@@ -177,12 +178,41 @@ export default [
   // Categories
   {
     path: '/wp/v2/categories',
-    method: '*',
+    method: 'GET',
     handler () {
-      return categories;
+      return new window.Response(JSON.stringify(categories));
+    },
+  },
+  {
+    path: '/wp/v2/categories',
+    method: 'POST',
+    handler ({ payload: { name } }) {
+      return {
+        id: window.lodash.random(1, 100000000),
+        name,
+      };
     },
   },
 
+  // Tags
+  {
+    path: '/wp/v2/tags',
+    method: 'GET',
+    handler () {
+      return new window.Response(JSON.stringify(tags));
+    },
+  },
+  {
+    path: '/wp/v2/tags',
+    method: 'POST',
+    handler ({ payload: { name } }) {
+      return {
+        id: window.lodash.random(1, 100000000),
+        name,
+      };
+    },
+  },
+  
   // Users
   {
     path: '/wp/v2/users/',
